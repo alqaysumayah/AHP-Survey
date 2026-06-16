@@ -1,1257 +1,1014 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="htmlRoot" lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Expert Weighting Survey — Date Palm as a Building Material</title>
+<title>Expert Weighting Survey | استبيان ترجيح الخبراء — Date Palm / نخيل التمر</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ── RESET & BASE ─────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{
-  font-family:'DM Sans',sans-serif;
-  font-weight:400;
-  background:#F7F5F0;
-  color:#1C1C1C;
-  min-height:100vh;
-  line-height:1.65;
-}
-
-/* ── CSS VARIABLES ────────────────────────────── */
+body{background:#F7F5F0;color:#1C1C1C;min-height:100vh;line-height:1.7}
+body.en{font-family:'DM Sans',sans-serif;direction:ltr}
+body.ar{font-family:'Noto Naskh Arabic',sans-serif;direction:rtl;line-height:1.9}
 :root{
-  --sand:#F7F5F0;
-  --sand-dark:#EDE9E0;
-  --earth:#2D2416;
-  --palm:#1A4A2E;
-  --palm-mid:#2D7A4F;
-  --palm-light:#E8F5EE;
-  --gold:#B8860B;
-  --gold-light:#FDF6E3;
-  --red:#8B2020;
-  --red-light:#FDEAEA;
-  --amber:#7A4A00;
-  --amber-light:#FEF3E2;
-  --border:#D4CFC4;
-  --text-muted:#6B6459;
-  --radius:10px;
-  --shadow:0 2px 16px rgba(45,36,22,.08);
+  --sand:#F7F5F0;--sand-dark:#EDE9E0;--earth:#2D2416;--palm:#1A4A2E;--palm-mid:#2D7A4F;
+  --palm-light:#E8F5EE;--gold:#B8860B;--gold-light:#FDF6E3;--red:#8B2020;--red-light:#FDEAEA;
+  --amber:#7A4A00;--amber-light:#FEF3E2;--border:#D4CFC4;--text-muted:#6B6459;
+  --radius:10px;--shadow:0 2px 16px rgba(45,36,22,.08);
 }
-
-/* ── LAYOUT ───────────────────────────────────── */
-.survey-shell{
-  max-width:760px;
-  margin:0 auto;
-  padding:0 20px 80px;
-}
-
-/* ── HEADER ───────────────────────────────────── */
-.site-header{
-  background:var(--palm);
-  color:#fff;
-  padding:0 20px;
-  position:sticky;
-  top:0;
-  z-index:100;
-  border-bottom:3px solid var(--gold);
-}
-.header-inner{
-  max-width:760px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  gap:16px;
-}
-.header-title{
-  font-family:'Playfair Display',serif;
-  font-size:15px;
-  font-weight:600;
-  letter-spacing:.01em;
-  color:#fff;
-}
-.header-sub{font-size:11px;color:rgba(255,255,255,.65);margin-top:1px}
-.progress-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.progress-bar-bg{width:120px;height:4px;background:rgba(255,255,255,.2);border-radius:2px}
+.survey-shell{max-width:760px;margin:0 auto;padding:0 20px 80px}
+.site-header{background:var(--palm);color:#fff;padding:0 20px;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--gold)}
+.header-inner{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:16px}
+.header-title{font-size:12px;font-weight:500;color:#fff;line-height:1.4;max-width:500px}
+.header-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.lang-toggle{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 12px;font-size:12px;color:#fff;cursor:pointer;transition:background .2s;white-space:nowrap}
+.lang-toggle:hover{background:rgba(255,255,255,.25)}
+.progress-wrap{display:flex;align-items:center;gap:8px}
+.progress-bar-bg{width:90px;height:4px;background:rgba(255,255,255,.2);border-radius:2px}
 .progress-bar-fill{height:4px;background:var(--gold);border-radius:2px;transition:width .5s ease}
-.progress-pct{font-size:11px;color:rgba(255,255,255,.7);min-width:30px;text-align:right}
-
-/* ── HERO ─────────────────────────────────────── */
-.hero{
-  background:var(--palm);
-  color:#fff;
-  padding:56px 20px 48px;
-  text-align:center;
-  border-bottom:3px solid var(--gold);
-}
-.hero-eyebrow{
-  font-size:11px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--gold);
-  font-weight:500;
-  margin-bottom:16px;
-}
-.hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(28px,5vw,42px);
-  font-weight:600;
-  line-height:1.2;
-  margin-bottom:16px;
-  color:#fff;
-}
-.hero-sub{
-  font-size:15px;
-  color:rgba(255,255,255,.75);
-  max-width:520px;
-  margin:0 auto 32px;
-}
-.hero-chips{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:8px;
-}
-.chip{
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:20px;
-  padding:4px 14px;
-  font-size:12px;
-  color:rgba(255,255,255,.85);
-}
-
-/* ── SECTION BLOCKS ───────────────────────────── */
-.section{
-  background:#fff;
-  border-radius:var(--radius);
-  border:1px solid var(--border);
-  padding:32px;
-  margin-top:24px;
-  box-shadow:var(--shadow);
-  display:none;
-}
+.progress-pct{font-size:11px;color:rgba(255,255,255,.7);min-width:28px}
+.hero{background:var(--palm);color:#fff;padding:56px 20px 48px;text-align:center;border-bottom:3px solid var(--gold)}
+.hero-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:16px}
+.hero-title{font-size:clamp(22px,4vw,36px);font-weight:600;line-height:1.35;margin-bottom:16px;color:#fff}
+body.en .hero-title{font-family:'Playfair Display',serif}
+body.ar .hero-title{font-family:'Noto Naskh Arabic',serif}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:580px;margin:0 auto 32px}
+.hero-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 14px;font-size:12px;color:rgba(255,255,255,.85)}
+.section{background:#fff;border-radius:var(--radius);border:1px solid var(--border);padding:32px;margin-top:24px;box-shadow:var(--shadow);display:none}
 .section.active{display:block;animation:fadeUp .35s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-
-.section-label{
-  font-size:10px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--palm-mid);
-  font-weight:500;
-  margin-bottom:8px;
-}
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:22px;
-  font-weight:600;
-  color:var(--earth);
-  margin-bottom:8px;
-}
-.section-desc{
-  font-size:14px;
-  color:var(--text-muted);
-  line-height:1.7;
-  margin-bottom:24px;
-}
-.section-divider{
-  border:none;
-  border-top:1px solid var(--border);
-  margin:24px 0;
-}
-
-/* ── FORM FIELDS ──────────────────────────────── */
+.section-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--palm-mid);font-weight:500;margin-bottom:8px}
+.section-title{font-size:22px;font-weight:600;color:var(--earth);margin-bottom:8px}
+body.en .section-title{font-family:'Playfair Display',serif}
+body.ar .section-title{font-family:'Noto Naskh Arabic',serif}
+.section-desc{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:24px}
+.section-divider{border:none;border-top:1px solid var(--border);margin:24px 0}
+.intro-box{background:var(--palm-light);border:1px solid var(--palm-mid);border-radius:10px;padding:22px 24px;margin-bottom:24px;font-size:14px;color:var(--earth);line-height:1.9}
+.intro-box h3{font-size:16px;color:var(--palm);margin-bottom:10px;font-weight:600}
+body.en .intro-box h3{font-family:'Playfair Display',serif}
+body.ar .intro-box h3{font-family:'Noto Naskh Arabic',serif}
+.intro-box p{margin-bottom:10px}
+.intro-box p:last-child{margin-bottom:0}
+.intro-note{font-size:13px;color:var(--palm);font-style:italic;border-right:3px solid var(--palm-mid);padding-right:10px;margin-top:12px}
+body.en .intro-note{border-right:none;border-left:3px solid var(--palm-mid);padding-right:0;padding-left:10px}
+.intro-divider{border:none;border-top:1px solid var(--palm-mid);margin:14px 0;opacity:.35}
+.criteria-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.crit-chip{background:#fff;border:1px solid #C8A800;border-radius:20px;padding:4px 12px;font-size:12px;color:var(--amber);font-weight:500}
+.crit-chip span{color:var(--text-muted);font-weight:400}
+.consent-box{background:var(--gold-light);border:1px solid #D4A800;border-radius:8px;padding:16px 18px;margin-bottom:20px;font-size:13px;color:#5A4000;line-height:1.8}
 .field-group{margin-bottom:20px}
-.field-label{
-  display:block;
-  font-size:13px;
-  font-weight:500;
-  color:var(--earth);
-  margin-bottom:6px;
-}
-.field-label .opt{
-  font-weight:400;
-  color:var(--text-muted);
-  font-size:12px;
-}
-.field-input,
-.field-select,
-.field-textarea{
-  width:100%;
-  padding:10px 14px;
-  border:1.5px solid var(--border);
-  border-radius:8px;
-  font-family:'DM Sans',sans-serif;
-  font-size:14px;
-  color:var(--earth);
-  background:#fff;
-  transition:border-color .2s;
-  outline:none;
-}
-.field-input:focus,
-.field-select:focus,
-.field-textarea:focus{border-color:var(--palm-mid)}
+.field-label{display:block;font-size:13px;font-weight:500;color:var(--earth);margin-bottom:6px}
+.field-label .opt{font-weight:400;color:var(--text-muted);font-size:12px}
+.field-hint{font-size:12px;color:var(--text-muted);margin-bottom:8px;line-height:1.5}
+.field-input,.field-textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;color:var(--earth);background:#fff;transition:border-color .2s;outline:none}
+body.en .field-input,body.en .field-textarea{font-family:'DM Sans',sans-serif;direction:ltr}
+body.ar .field-input,body.ar .field-textarea{font-family:'Noto Naskh Arabic',sans-serif;direction:rtl}
+.field-input:focus,.field-textarea:focus{border-color:var(--palm-mid)}
 .field-textarea{resize:vertical;min-height:80px}
-
+.other-input{width:100%;padding:8px 12px;margin-top:8px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;color:var(--earth);background:#fff;outline:none;display:none}
+body.en .other-input{font-family:'DM Sans',sans-serif;direction:ltr}
+body.ar .other-input{font-family:'Noto Naskh Arabic',sans-serif;direction:rtl}
+.other-input:focus{border-color:var(--palm-mid)}
 .radio-group{display:flex;flex-direction:column;gap:8px}
-.radio-opt{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 14px;
-  border:1.5px solid var(--border);
-  border-radius:8px;
-  cursor:pointer;
-  transition:border-color .2s,background .2s;
-  font-size:14px;
-  color:var(--earth);
-}
+.radio-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;font-size:14px;color:var(--earth)}
+body.ar .radio-opt{flex-direction:row-reverse;justify-content:flex-end}
 .radio-opt:hover{border-color:var(--palm-mid);background:var(--palm-light)}
 .radio-opt input{accent-color:var(--palm);width:16px;height:16px;flex-shrink:0}
 .radio-opt.selected{border-color:var(--palm);background:var(--palm-light)}
-
-/* ── CONSENT BOX ──────────────────────────────── */
-.consent-box{
-  background:var(--gold-light);
-  border:1px solid #D4A800;
-  border-radius:8px;
-  padding:16px 18px;
-  margin-bottom:20px;
-  font-size:13px;
-  color:#5A4000;
-  line-height:1.7;
-}
-
-/* ── AHP COMPARISON ───────────────────────────── */
-.pair-block{
-  border:1.5px solid var(--border);
-  border-radius:var(--radius);
-  padding:20px;
-  margin-bottom:16px;
-  background:var(--sand);
-  transition:border-color .2s;
-}
+.check-opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s;font-size:14px;color:var(--earth)}
+body.ar .check-opt{flex-direction:row-reverse;justify-content:flex-end}
+.check-opt:hover{border-color:var(--palm-mid);background:var(--palm-light)}
+.check-opt input{accent-color:var(--palm);width:16px;height:16px;flex-shrink:0}
+.check-opt.selected{border-color:var(--palm);background:var(--palm-light)}
+.pair-block{border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px;background:var(--sand);transition:border-color .2s}
 .pair-block:hover{border-color:var(--palm-mid)}
-.pair-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:14px;
-}
-.pair-left{
-  font-size:13px;
-  font-weight:500;
-  color:var(--palm);
-  text-align:left;
-  flex:1;
-}
-.pair-vs{
-  font-size:11px;
-  color:var(--text-muted);
-  padding:0 12px;
-  text-transform:uppercase;
-  letter-spacing:.06em;
-}
-.pair-right{
-  font-size:13px;
-  font-weight:500;
-  color:var(--gold);
-  text-align:right;
-  flex:1;
-}
-.slider-wrap{position:relative;padding:4px 0 20px}
-.pair-slider{
-  width:100%;
-  height:6px;
-  accent-color:var(--palm);
-  cursor:pointer;
-}
-.slider-labels{
-  display:flex;
-  justify-content:space-between;
-  font-size:10px;
-  color:var(--text-muted);
-  margin-top:4px;
-}
-.slider-val-display{
-  text-align:center;
-  font-size:12px;
-  font-weight:500;
-  color:var(--earth);
-  margin-top:6px;
-  min-height:18px;
-}
-
-/* ── CR PANEL ─────────────────────────────────── */
-.cr-panel{
-  border-radius:var(--radius);
-  border:1.5px solid var(--border);
-  padding:18px 20px;
-  margin-top:20px;
-  transition:border-color .3s,background .3s;
-}
+.pair-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;direction:ltr}
+.pair-left{font-size:13px;font-weight:500;color:var(--palm);text-align:left;flex:1}
+.pair-vs{font-size:11px;color:var(--text-muted);padding:0 12px;text-transform:uppercase;letter-spacing:.06em}
+.pair-right{font-size:13px;font-weight:500;color:var(--gold);text-align:right;flex:1}
+.slider-wrap{position:relative;padding:4px 0 20px;direction:ltr}
+.pair-slider{width:100%;height:6px;accent-color:var(--palm);cursor:pointer}
+.slider-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text-muted);margin-top:4px;direction:ltr}
+.slider-val-display{text-align:center;font-size:12px;font-weight:500;color:var(--earth);margin-top:6px;min-height:18px}
+body.ar .slider-val-display{direction:rtl}
+.cr-panel{border-radius:var(--radius);border:1.5px solid var(--border);padding:18px 20px;margin-top:20px;transition:border-color .3s,background .3s}
 .cr-panel.ok{border-color:#2D7A4F;background:var(--palm-light)}
-.cr-panel.warn{border-color:#B8860B;background:var(--gold-light)}
 .cr-panel.fail{border-color:#8B2020;background:var(--red-light)}
 .cr-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .cr-label{font-size:12px;font-weight:500}
-.cr-label.ok{color:var(--palm)}
-.cr-label.warn{color:var(--amber)}
-.cr-label.fail{color:var(--red)}
+.cr-label.ok{color:var(--palm)}.cr-label.fail{color:var(--red)}
 .cr-value{font-size:26px;font-weight:500;font-family:'Playfair Display',serif}
-.cr-value.ok{color:var(--palm)}
-.cr-value.warn{color:var(--gold)}
-.cr-value.fail{color:var(--red)}
-.cr-bar-bg{height:5px;background:var(--border);border-radius:3px;margin-bottom:8px;position:relative}
+.cr-value.ok{color:var(--palm)}.cr-value.fail{color:var(--red)}
+.cr-bar-bg{height:5px;background:var(--border);border-radius:3px;margin-bottom:8px;position:relative;direction:ltr}
 .cr-bar-fill{height:5px;border-radius:3px;transition:width .4s,background .3s;max-width:100%}
 .cr-bar-tick{position:absolute;top:-4px;left:50%;width:1.5px;height:13px;background:var(--text-muted);border-radius:1px}
-.cr-msg{font-size:12px;line-height:1.6}
-.cr-msg.ok{color:var(--palm)}
-.cr-msg.warn{color:var(--amber)}
-.cr-msg.fail{color:var(--red)}
+.cr-msg{font-size:12px;line-height:1.7}
+.cr-msg.ok{color:var(--palm)}.cr-msg.fail{color:var(--red)}
 .cr-attempt{font-size:11px;color:var(--text-muted);margin-top:4px}
-
-/* Weights display */
 .weights-block{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
 .weight-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.weight-name{font-size:12px;color:var(--text-muted);width:180px;flex-shrink:0}
-.weight-bar-bg{flex:1;height:6px;background:var(--sand-dark);border-radius:3px;overflow:hidden}
+body.ar .weight-row{flex-direction:row-reverse}
+.weight-name{font-size:12px;color:var(--text-muted);width:200px;flex-shrink:0}
+body.ar .weight-name{text-align:right}
+.weight-bar-bg{flex:1;height:6px;background:var(--sand-dark);border-radius:3px;overflow:hidden;direction:ltr}
 .weight-bar{height:6px;background:var(--palm-mid);border-radius:3px;transition:width .4s}
 .weight-pct{font-size:12px;font-weight:500;color:var(--earth);width:38px;text-align:right}
-
-/* ── LIKERT GRID ──────────────────────────────── */
 .likert-table{width:100%;border-collapse:collapse;margin-bottom:4px}
-.likert-table th{
-  font-size:11px;
-  font-weight:500;
-  color:var(--text-muted);
-  text-align:center;
-  padding:6px 4px 10px;
-  border-bottom:1.5px solid var(--border);
-}
-.likert-table th.stmt-h{text-align:left;padding-left:0}
-.likert-table td{
-  padding:10px 4px;
-  border-bottom:1px solid var(--sand-dark);
-  vertical-align:middle;
-}
+.likert-table th{font-size:11px;font-weight:500;color:var(--text-muted);text-align:center;padding:6px 4px 10px;border-bottom:1.5px solid var(--border)}
+.likert-table th.stmt-h{padding-left:0;padding-right:0}
+body.en .likert-table th.stmt-h{text-align:left}
+body.ar .likert-table th.stmt-h{text-align:right}
+.likert-table td{padding:10px 4px;border-bottom:1px solid var(--sand-dark);vertical-align:middle}
 .likert-table tr:last-child td{border-bottom:none}
-.likert-table td.stmt{
-  font-size:13px;
-  color:var(--earth);
-  line-height:1.5;
-  padding-right:12px;
-  padding-left:0;
-}
+.likert-table td.stmt{font-size:13px;color:var(--earth);line-height:1.6;padding-right:12px;padding-left:0}
+body.ar .likert-table td.stmt{text-align:right;padding-left:12px;padding-right:0}
 .likert-table td.radio-cell{text-align:center}
-.likert-table input[type=radio]{
-  width:16px;height:16px;
-  accent-color:var(--palm);
-  cursor:pointer;
-}
+.likert-table input[type=radio]{width:16px;height:16px;accent-color:var(--palm);cursor:pointer}
 .likert-table tr:hover td{background:#FAFAF8}
-.dim-header{
-  font-size:11px;
-  font-weight:500;
-  color:var(--palm);
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  padding:16px 0 8px;
-  border-bottom:1.5px solid var(--palm-light);
-  margin-bottom:0;
-}
-
-/* ── BUTTONS ──────────────────────────────────── */
+.dim-header{font-size:11px;font-weight:500;color:var(--palm);text-transform:uppercase;letter-spacing:.06em;padding:16px 0 8px;border-bottom:1.5px solid var(--palm-light)}
+body.ar .dim-header{text-align:right}
 .btn-row{display:flex;gap:10px;justify-content:flex-end;margin-top:28px;flex-wrap:wrap}
-.btn{
-  padding:11px 28px;
-  border-radius:8px;
-  font-family:'DM Sans',sans-serif;
-  font-size:14px;
-  font-weight:500;
-  cursor:pointer;
-  border:1.5px solid transparent;
-  transition:all .2s;
-}
-.btn-primary{
-  background:var(--palm);
-  color:#fff;
-  border-color:var(--palm);
-}
-.btn-primary:hover{background:var(--palm-mid);border-color:var(--palm-mid)}
-.btn-primary:disabled{
-  background:var(--border);
-  border-color:var(--border);
-  color:var(--text-muted);
-  cursor:not-allowed;
-}
-.btn-ghost{
-  background:transparent;
-  color:var(--text-muted);
-  border-color:var(--border);
-}
+body.ar .btn-row{justify-content:flex-start}
+.btn{padding:11px 28px;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;border:1.5px solid transparent;transition:all .2s}
+body.en .btn{font-family:'DM Sans',sans-serif}
+body.ar .btn{font-family:'Noto Naskh Arabic',sans-serif}
+.btn-primary{background:var(--palm);color:#fff;border-color:var(--palm)}
+.btn-primary:hover{background:var(--palm-mid)}
+.btn-ghost{background:transparent;color:var(--text-muted);border-color:var(--border)}
 .btn-ghost:hover{border-color:var(--palm-mid);color:var(--palm)}
-.btn-submit{
-  background:var(--gold);
-  color:#fff;
-  border-color:var(--gold);
-  padding:13px 36px;
-  font-size:15px;
-}
-.btn-submit:hover{background:var(--amber);border-color:var(--amber)}
-.btn-submit:disabled{
-  background:var(--border);
-  border-color:var(--border);
-  color:var(--text-muted);
-  cursor:not-allowed;
-}
-
-/* ── SUMMARY CARD ─────────────────────────────── */
-.summary-card{
-  background:var(--sand);
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:16px 18px;
-  margin-bottom:12px;
-}
-.summary-card h4{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--palm);
-  font-weight:500;
-  margin-bottom:10px;
-}
+.btn-submit{background:var(--gold);color:#fff;border-color:var(--gold);padding:13px 36px;font-size:15px}
+.btn-submit:hover{background:var(--amber)}
+.summary-card{background:var(--sand);border:1px solid var(--border);border-radius:8px;padding:16px 18px;margin-bottom:12px}
+.summary-card h4{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--palm);font-weight:500;margin-bottom:10px}
+body.ar .summary-card h4{text-align:right}
 .summary-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0}
-.summary-row .s-key{color:var(--text-muted)}
-.summary-row .s-val{font-weight:500;color:var(--earth)}
-
-/* ── THANK YOU ────────────────────────────────── */
+body.ar .summary-row{flex-direction:row-reverse}
+.summary-row .s-key{color:var(--text-muted)}.summary-row .s-val{font-weight:500;color:var(--earth)}
 .thankyou{text-align:center;padding:48px 20px}
-.thankyou-icon{
-  width:72px;height:72px;
-  border-radius:50%;
-  background:var(--palm-light);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 24px;
-  font-size:32px;
-}
-.thankyou-title{
-  font-family:'Playfair Display',serif;
-  font-size:28px;
-  color:var(--earth);
-  margin-bottom:12px;
-}
+.thankyou-icon{width:72px;height:72px;border-radius:50%;background:var(--palm-light);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:32px}
+.thankyou-title{font-size:28px;color:var(--earth);margin-bottom:12px}
+body.en .thankyou-title{font-family:'Playfair Display',serif}
+body.ar .thankyou-title{font-family:'Noto Naskh Arabic',serif}
 .thankyou-sub{font-size:15px;color:var(--text-muted);max-width:440px;margin:0 auto 24px}
-.ref-code{
-  background:var(--palm-light);
-  border:1px solid var(--palm-mid);
-  border-radius:8px;
-  display:inline-block;
-  padding:8px 20px;
-  font-family:monospace;
-  font-size:14px;
-  color:var(--palm);
-  letter-spacing:.1em;
-  margin-bottom:8px;
-}
-
-/* ── STATUS ALERTS ────────────────────────────── */
-.alert{
-  border-radius:8px;
-  padding:12px 16px;
-  font-size:13px;
-  margin-bottom:16px;
-  display:none;
-  line-height:1.6;
-}
+.ref-code{background:var(--palm-light);border:1px solid var(--palm-mid);border-radius:8px;display:inline-block;padding:8px 20px;font-family:monospace;font-size:14px;color:var(--palm);letter-spacing:.1em;margin-bottom:8px;direction:ltr}
+.alert{border-radius:8px;padding:12px 16px;font-size:13px;margin-bottom:16px;display:none;line-height:1.7}
 .alert.show{display:block}
 .alert-warn{background:var(--amber-light);border:1px solid #C8860A;color:var(--amber)}
 .alert-fail{background:var(--red-light);border:1px solid #8B2020;color:var(--red)}
-.alert-ok{background:var(--palm-light);border:1px solid var(--palm-mid);color:var(--palm)}
-
-/* ── SAVING SPINNER ───────────────────────────── */
-.saving-overlay{
-  display:none;position:fixed;inset:0;
-  background:rgba(247,245,240,.85);
-  z-index:999;
-  align-items:center;justify-content:center;
-  flex-direction:column;gap:16px;
-}
+.saving-overlay{display:none;position:fixed;inset:0;background:rgba(247,245,240,.85);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:16px}
 .saving-overlay.show{display:flex}
-.spinner{
-  width:36px;height:36px;
-  border:3px solid var(--border);
-  border-top-color:var(--palm);
-  border-radius:50%;
-  animation:spin .7s linear infinite;
-}
+.spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--palm);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* ── RESPONSIVE ───────────────────────────────── */
+.lang-pick-screen{text-align:center;padding:16px 0}
+.lang-pick-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--earth);margin-bottom:6px}
+.lang-pick-sub{font-size:13px;color:var(--text-muted);margin-bottom:24px}
+.lang-pick-ar{font-family:'Noto Naskh Arabic',serif;font-size:18px;color:var(--earth);margin-bottom:6px;direction:rtl}
+.lang-pick-ar-sub{font-family:'Noto Naskh Arabic',serif;font-size:13px;color:var(--text-muted);margin-bottom:24px;direction:rtl}
+.lang-divider{display:flex;align-items:center;gap:12px;margin:16px auto;color:var(--text-muted);font-size:12px;max-width:300px}
+.lang-divider::before,.lang-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.lang-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.lang-btn{padding:14px 36px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;border:2px solid transparent;transition:all .2s;min-width:180px}
+.lang-btn-en{background:var(--palm);color:#fff;border-color:var(--palm);font-family:'DM Sans',sans-serif}
+.lang-btn-en:hover{background:var(--palm-mid)}
+.lang-btn-ar{background:var(--gold);color:#fff;border-color:var(--gold);font-family:'Noto Naskh Arabic',serif;font-size:17px}
+.lang-btn-ar:hover{background:var(--amber)}
 @media(max-width:600px){
-  .section{padding:20px 16px}
-  .hero{padding:36px 16px 32px}
+  .section{padding:20px 16px}.hero{padding:36px 16px 32px}
   .pair-header{flex-direction:column;gap:6px;text-align:center}
-  .pair-left,.pair-right{text-align:center}
   .weight-name{width:140px;font-size:11px}
-  .likert-table th,.likert-table td.stmt{font-size:12px}
-  .header-title{font-size:13px}
-  .progress-wrap{display:none}
+  .likert-table th,.likert-table td.stmt{font-size:11px}
+  .header-title{font-size:11px}.progress-wrap{display:none}
+  .lang-btns{flex-direction:column;align-items:center}
 }
 </style>
 </head>
-<body>
+<body class="en">
 
-<!-- ── STICKY HEADER ── -->
 <header class="site-header">
   <div class="header-inner">
-    <div>
-      <div class="header-title">Date Palm Building Material Study</div>
-      <div class="header-sub">Expert Weighting Survey</div>
-    </div>
-    <div class="progress-wrap">
-      <div class="progress-bar-bg">
-        <div class="progress-bar-fill" id="progressBar" style="width:0%"></div>
+    <div class="header-title">A BIM-Integrated MCDA Framework for Evaluating Date Palm Biomass Valorization as Sustainable Building Materials, Informed by Meta-Analyzed Performance Data</div>
+    <div class="header-right">
+      <button class="lang-toggle" onclick="switchLang()" id="langToggleBtn">العربية</button>
+      <div class="progress-wrap">
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressBar" style="width:0%"></div></div>
+        <div class="progress-pct" id="progressPct">0%</div>
       </div>
-      <div class="progress-pct" id="progressPct">0%</div>
     </div>
   </div>
 </header>
 
-<!-- ── HERO ── -->
 <div class="hero" id="heroBlock">
-  <div class="hero-eyebrow">Saudi Arabia · Built Environment Research</div>
-  <h1 class="hero-title">Expert Weighting Survey<br>Date Palm as a Building Material</h1>
-  <p class="hero-sub">Your professional judgment will determine the relative importance of evaluation criteria for date palm biomass in Gulf construction practice.</p>
-  <div class="hero-chips">
-    <span class="chip">≈ 20 min</span>
-    <span class="chip">AHP pairwise comparisons</span>
-    <span class="chip">Social acceptance perceptions</span>
-    <span class="chip">Mixed expert panel</span>
+  <div class="hero-eyebrow" id="heroEyebrow">King Fahd University of Petroleum and Minerals · Saudi Arabia</div>
+  <h1 class="hero-title" id="heroTitle">Expert Weighting Survey<br>Date Palm Biomass as a Building Material</h1>
+  <p class="hero-sub" id="heroSub">Your professional judgment will shape the evaluation criteria for date palm biomass as a building material in Saudi Arabia.</p>
+  <div class="hero-chips" id="heroChips">
+    <span class="chip" id="chip1">10–15 min</span>
+    <span class="chip" id="chip2">AHP pairwise comparisons</span>
+    <span class="chip" id="chip3">Social acceptance perceptions</span>
   </div>
 </div>
 
 <div class="survey-shell">
 
-<!-- ══ BLOCK 1: CONSENT ══ -->
-<div class="section active" id="block-consent">
-  <div class="section-label">Block 1 of 4</div>
-  <h2 class="section-title">Introduction &amp; Consent</h2>
-  <div class="consent-box">
-    <strong>Dear Expert,</strong><br><br>
-    Thank you for participating in this study on the use of date palm biomass as a building material in Saudi Arabia and the Gulf region. Your expert judgment will be used to determine the relative importance of three evaluation criteria using the Analytic Hierarchy Process (AHP):<br><br>
-    <strong>Technical Performance</strong> (strength, thermal, durability) &nbsp;·&nbsp;
-    <strong>Environmental Impact</strong> (embodied carbon, energy) &nbsp;·&nbsp;
-    <strong>Supply Chain</strong> (cost, local availability)<br><br>
-    The survey has two parts. Part 1 asks you to compare the three criteria in pairs. A Consistency Ratio (CR) is calculated in real time — if your CR exceeds 0.10 you will be given one opportunity to revise. Part 2 asks about your professional perceptions of date palm in the built environment.<br><br>
-    Your responses are confidential and used solely for academic research.
-  </div>
-
-  <div class="field-group">
-    <label class="field-label">Do you consent to participate in this study?</label>
-    <div class="radio-group" id="consentRadios">
-      <label class="radio-opt">
-        <input type="radio" name="consent" value="agree"> I agree — proceed to the survey
-      </label>
-      <label class="radio-opt">
-        <input type="radio" name="consent" value="disagree"> I do not agree — exit the survey
-      </label>
+<!-- LANGUAGE PICKER -->
+<div class="section active" id="block-lang">
+  <div class="lang-pick-screen">
+    <p class="lang-pick-title">Please select your preferred language</p>
+    <p class="lang-pick-sub">Choose the language you are most comfortable with for professional judgment</p>
+    <div class="lang-divider">or / أو</div>
+    <p class="lang-pick-ar">يرجى اختيار اللغة المفضلة</p>
+    <p class="lang-pick-ar-sub">اختر اللغة الأكثر ملاءمة لك في التعبير عن حكمك المهني</p>
+    <div class="lang-btns">
+      <button class="lang-btn lang-btn-en" onclick="chooseLang('en')">Continue in English</button>
+      <button class="lang-btn lang-btn-ar" onclick="chooseLang('ar')">المتابعة بالعربية</button>
     </div>
-  </div>
-
-  <div class="alert alert-fail" id="consentAlert">Please select an option to continue.</div>
-
-  <div class="btn-row">
-    <button class="btn btn-primary" onclick="submitConsent()">Continue →</button>
   </div>
 </div>
 
-<!-- ══ BLOCK 2: DEMOGRAPHICS ══ -->
+<!-- BLOCK 1: CONSENT -->
+<div class="section" id="block-consent">
+  <div class="section-label" id="lbl1"></div>
+  <h2 class="section-title" id="ttl1"></h2>
+  <div class="intro-box" id="introBox">
+    <h3 id="introBgTitle"></h3>
+    <p id="introBg1"></p>
+    <p id="introBg2"></p>
+    <p id="introBg3"></p>
+    <div class="intro-divider"></div>
+    <h3 id="introFocusTitle"></h3>
+    <p id="introFocus1"></p>
+    <div class="criteria-chips">
+      <span class="crit-chip" id="cc1"></span>
+      <span class="crit-chip" id="cc2"></span>
+      <span class="crit-chip" id="cc3"></span>
+    </div>
+    <p class="intro-note" id="introNote"></p>
+  </div>
+  <div class="consent-box" id="consentBox"></div>
+  <div class="field-group">
+    <label class="field-label" id="consentQ"></label>
+    <div class="radio-group" id="consentRadios"></div>
+  </div>
+  <div class="alert alert-fail" id="consentAlert"></div>
+  <div class="btn-row"><button class="btn btn-primary" onclick="submitConsent()" id="consentBtn"></button></div>
+</div>
+
+<!-- BLOCK 2: DEMOGRAPHICS -->
 <div class="section" id="block-demo">
-  <div class="section-label">Block 2 of 4 — Expert Profile</div>
-  <h2 class="section-title">Your Professional Background</h2>
-  <p class="section-desc">This information is used to describe the expert panel in the research report. All fields except name are required.</p>
-
+  <div class="section-label" id="lbl2"></div>
+  <h2 class="section-title" id="ttl2"></h2>
+  <p class="section-desc" id="desc2"></p>
   <div class="field-group">
-    <label class="field-label">Name <span class="opt">(optional)</span></label>
-    <input type="text" class="field-input" id="d_name" placeholder="Your full name">
+    <label class="field-label" id="dNameLbl"></label>
+    <input type="text" class="field-input" id="d_name" placeholder="">
   </div>
-
   <div class="field-group">
-    <label class="field-label">Field of expertise</label>
-    <div class="radio-group" id="d_field_radios">
-      <label class="radio-opt"><input type="radio" name="d_field" value="Architecture or interior design"> Architecture or interior design</label>
-      <label class="radio-opt"><input type="radio" name="d_field" value="Structural or civil engineering"> Structural or civil engineering</label>
-      <label class="radio-opt"><input type="radio" name="d_field" value="Materials science or building physics"> Materials science or building physics</label>
-      <label class="radio-opt"><input type="radio" name="d_field" value="Environmental or sustainability engineering"> Environmental or sustainability engineering</label>
-      <label class="radio-opt"><input type="radio" name="d_field" value="Construction management"> Construction management</label>
-      <label class="radio-opt"><input type="radio" name="d_field" value="Agricultural science or date palm agronomy"> Agricultural science or date palm agronomy</label>
-      <label class="radio-opt"><input type="radio" name="d_field" value="Policy, planning, or academia"> Policy, planning, or academia</label>
-      <label class="radio-opt"><input type="radio" name="d_field" value="Other"> Other</label>
-    </div>
+    <label class="field-label" id="dSectorLbl"></label>
+    <div class="radio-group" id="dSectorOpts"></div>
+    <input type="text" class="other-input" id="d_sector_other" placeholder="">
   </div>
-
   <div class="field-group">
-    <label class="field-label">Years of professional experience</label>
-    <div class="radio-group">
-      <label class="radio-opt"><input type="radio" name="d_exp" value="Less than 5 years"> Less than 5 years</label>
-      <label class="radio-opt"><input type="radio" name="d_exp" value="5–10 years"> 5–10 years</label>
-      <label class="radio-opt"><input type="radio" name="d_exp" value="11–20 years"> 11–20 years</label>
-      <label class="radio-opt"><input type="radio" name="d_exp" value="More than 20 years"> More than 20 years</label>
-    </div>
+    <label class="field-label" id="dDomainLbl"></label>
+    <p class="field-hint" id="dDomainHint"></p>
+    <div class="radio-group" id="dDomainOpts"></div>
+    <input type="text" class="other-input" id="d_domain_other" placeholder="">
   </div>
-
   <div class="field-group">
-    <label class="field-label">Highest academic qualification</label>
-    <div class="radio-group">
-      <label class="radio-opt"><input type="radio" name="d_qual" value="Bachelor's degree"> Bachelor's degree</label>
-      <label class="radio-opt"><input type="radio" name="d_qual" value="Master's degree"> Master's degree</label>
-      <label class="radio-opt"><input type="radio" name="d_qual" value="Doctorate (PhD or equivalent)"> Doctorate (PhD or equivalent)</label>
-      <label class="radio-opt"><input type="radio" name="d_qual" value="Professional certification"> Professional certification</label>
-      <label class="radio-opt"><input type="radio" name="d_qual" value="Other"> Other</label>
-    </div>
+    <label class="field-label" id="dExpLbl"></label>
+    <div class="radio-group" id="dExpOpts"></div>
   </div>
-
   <div class="field-group">
-    <label class="field-label">Familiarity with date palm as a building material</label>
-    <div class="radio-group">
-      <label class="radio-opt"><input type="radio" name="d_famDp" value="No prior knowledge"> No prior knowledge</label>
-      <label class="radio-opt"><input type="radio" name="d_famDp" value="General awareness only"> General awareness only</label>
-      <label class="radio-opt"><input type="radio" name="d_famDp" value="Moderate — read or worked on related topics"> Moderate — I have read or worked on related topics</label>
-      <label class="radio-opt"><input type="radio" name="d_famDp" value="High — significant research or practical experience"> High — I have significant research or practical experience</label>
-    </div>
+    <label class="field-label" id="dQualLbl"></label>
+    <div class="radio-group" id="dQualOpts"></div>
   </div>
-
   <div class="field-group">
-    <label class="field-label">Country of practice</label>
-    <div class="radio-group">
-      <label class="radio-opt"><input type="radio" name="d_country" value="Saudi Arabia"> Saudi Arabia</label>
-      <label class="radio-opt"><input type="radio" name="d_country" value="UAE"> UAE</label>
-      <label class="radio-opt"><input type="radio" name="d_country" value="Qatar"> Qatar</label>
-      <label class="radio-opt"><input type="radio" name="d_country" value="Kuwait"> Kuwait</label>
-      <label class="radio-opt"><input type="radio" name="d_country" value="Other GCC country"> Other GCC country</label>
-      <label class="radio-opt"><input type="radio" name="d_country" value="Outside the GCC region"> Outside the GCC region</label>
-    </div>
+    <label class="field-label" id="dFamDpLbl"></label>
+    <div class="radio-group" id="dFamDpOpts"></div>
   </div>
-
   <div class="field-group">
-    <label class="field-label">Familiarity with multi-criteria decision analysis (AHP, TOPSIS, MCDM)</label>
-    <div class="radio-group">
-      <label class="radio-opt"><input type="radio" name="d_famAhp" value="Not familiar"> Not familiar</label>
-      <label class="radio-opt"><input type="radio" name="d_famAhp" value="Somewhat familiar"> Somewhat familiar — I have heard of these methods</label>
-      <label class="radio-opt"><input type="radio" name="d_famAhp" value="Familiar — used or studied these methods"> Familiar — I have used or studied these methods</label>
-      <label class="radio-opt"><input type="radio" name="d_famAhp" value="Very familiar — regularly applies these methods"> Very familiar — I regularly apply these methods</label>
-    </div>
+    <label class="field-label" id="dCountryLbl"></label>
+    <div class="radio-group" id="dCountryOpts"></div>
   </div>
-
-  <div class="alert alert-fail" id="demoAlert">Please answer all required questions before continuing.</div>
-
+  <div class="field-group">
+    <label class="field-label" id="dFamAhpLbl"></label>
+    <div class="radio-group" id="dFamAhpOpts"></div>
+  </div>
+  <div class="alert alert-fail" id="demoAlert"></div>
   <div class="btn-row">
-    <button class="btn btn-ghost" onclick="goTo('block-consent')">← Back</button>
-    <button class="btn btn-primary" onclick="submitDemo()">Continue to AHP →</button>
+    <button class="btn btn-ghost" onclick="goTo('block-consent')" id="demoBtnBack"></button>
+    <button class="btn btn-primary" onclick="submitDemo()" id="demoBtnNext"></button>
   </div>
 </div>
 
-<!-- ══ BLOCK 3: AHP ══ -->
+<!-- BLOCK 3: AHP -->
 <div class="section" id="block-ahp">
-  <div class="section-label">Block 3 of 4 — AHP Pairwise Comparisons</div>
-  <h2 class="section-title">Criteria Weighting</h2>
-  <p class="section-desc">For each pair of criteria below, move the slider to indicate which criterion you consider more important for evaluating date palm biomass as a building material, and by how much. Leave centred for equal importance.</p>
-
-  <div class="consent-box" style="background:#EEF7F2;border-color:var(--palm-mid);color:var(--palm)">
-    <strong>Saaty scale:</strong> &nbsp;
-    1 = Equal &nbsp;·&nbsp; 3 = Moderate &nbsp;·&nbsp; 5 = Strong &nbsp;·&nbsp; 7 = Very strong &nbsp;·&nbsp; 9 = Extreme preference
-  </div>
-
-  <!-- Pair 1 -->
-  <div class="pair-block" id="pb1">
-    <div class="pair-header">
-      <span class="pair-left" id="pl1">Environmental Impact</span>
-      <span class="pair-vs">vs</span>
-      <span class="pair-right" id="pr1">Technical Performance</span>
-    </div>
+  <div class="section-label" id="lbl3"></div>
+  <h2 class="section-title" id="ttl3"></h2>
+  <p class="section-desc" id="desc3"></p>
+  <div class="consent-box" id="saatBox" style="background:#EEF7F2;border-color:var(--palm-mid);color:var(--palm)"></div>
+  <div class="pair-block">
+    <div class="pair-header"><span class="pair-left" id="pl1"></span><span class="pair-vs" id="vs1"></span><span class="pair-right" id="pr1"></span></div>
     <div class="slider-wrap">
       <input type="range" class="pair-slider" id="s1" min="1" max="17" value="9" step="1">
-      <div class="slider-labels">
-        <span>← Env. preferred (9×)</span>
-        <span>Equal</span>
-        <span>Tech. preferred (9×) →</span>
-      </div>
-      <div class="slider-val-display" id="sv1">Equal importance (1)</div>
+      <div class="slider-labels"><span id="sl1L"></span><span id="sl1M"></span><span id="sl1R"></span></div>
+      <div class="slider-val-display" id="sv1"></div>
     </div>
   </div>
-
-  <!-- Pair 2 -->
-  <div class="pair-block" id="pb2">
-    <div class="pair-header">
-      <span class="pair-left" id="pl2">Supply Chain</span>
-      <span class="pair-vs">vs</span>
-      <span class="pair-right" id="pr2">Technical Performance</span>
-    </div>
+  <div class="pair-block">
+    <div class="pair-header"><span class="pair-left" id="pl2"></span><span class="pair-vs" id="vs2"></span><span class="pair-right" id="pr2"></span></div>
     <div class="slider-wrap">
       <input type="range" class="pair-slider" id="s2" min="1" max="17" value="9" step="1">
-      <div class="slider-labels">
-        <span>← Supply preferred (9×)</span>
-        <span>Equal</span>
-        <span>Tech. preferred (9×) →</span>
-      </div>
-      <div class="slider-val-display" id="sv2">Equal importance (1)</div>
+      <div class="slider-labels"><span id="sl2L"></span><span id="sl2M"></span><span id="sl2R"></span></div>
+      <div class="slider-val-display" id="sv2"></div>
     </div>
   </div>
-
-  <!-- Pair 3 -->
-  <div class="pair-block" id="pb3">
-    <div class="pair-header">
-      <span class="pair-left" id="pl3">Supply Chain</span>
-      <span class="pair-vs">vs</span>
-      <span class="pair-right" id="pr3">Environmental Impact</span>
-    </div>
+  <div class="pair-block">
+    <div class="pair-header"><span class="pair-left" id="pl3"></span><span class="pair-vs" id="vs3"></span><span class="pair-right" id="pr3"></span></div>
     <div class="slider-wrap">
       <input type="range" class="pair-slider" id="s3" min="1" max="17" value="9" step="1">
-      <div class="slider-labels">
-        <span>← Supply preferred (9×)</span>
-        <span>Equal</span>
-        <span>Env. preferred (9×) →</span>
-      </div>
-      <div class="slider-val-display" id="sv3">Equal importance (1)</div>
+      <div class="slider-labels"><span id="sl3L"></span><span id="sl3M"></span><span id="sl3R"></span></div>
+      <div class="slider-val-display" id="sv3"></div>
     </div>
   </div>
-
-  <!-- CR Panel — hidden until expert submits attempt -->
   <div class="cr-panel" id="crPanel" style="display:none">
-    <div class="cr-top">
-      <span class="cr-label" id="crLabel">Consistency ratio</span>
-      <span class="cr-value" id="crValue">—</span>
-    </div>
-    <div class="cr-bar-bg">
-      <div class="cr-bar-fill" id="crBar" style="width:0%"></div>
-      <div class="cr-bar-tick"></div>
-    </div>
+    <div class="cr-top"><span class="cr-label" id="crLabel"></span><span class="cr-value" id="crValue">—</span></div>
+    <div class="cr-bar-bg"><div class="cr-bar-fill" id="crBar" style="width:0%"></div><div class="cr-bar-tick"></div></div>
     <p class="cr-msg" id="crMsg"></p>
     <p class="cr-attempt" id="crAttempt"></p>
     <div class="weights-block" id="weightsBlock" style="display:none">
-      <div class="weight-row">
-        <span class="weight-name">Technical Performance</span>
-        <div class="weight-bar-bg"><div class="weight-bar" id="wb1" style="width:0%"></div></div>
-        <span class="weight-pct" id="wp1">—</span>
-      </div>
-      <div class="weight-row">
-        <span class="weight-name">Environmental Impact</span>
-        <div class="weight-bar-bg"><div class="weight-bar" id="wb2" style="width:0%"></div></div>
-        <span class="weight-pct" id="wp2">—</span>
-      </div>
-      <div class="weight-row">
-        <span class="weight-name">Supply Chain</span>
-        <div class="weight-bar-bg"><div class="weight-bar" id="wb3" style="width:0%"></div></div>
-        <span class="weight-pct" id="wp3">—</span>
-      </div>
+      <div class="weight-row"><span class="weight-name" id="wn1"></span><div class="weight-bar-bg"><div class="weight-bar" id="wb1" style="width:0%"></div></div><span class="weight-pct" id="wp1">—</span></div>
+      <div class="weight-row"><span class="weight-name" id="wn2"></span><div class="weight-bar-bg"><div class="weight-bar" id="wb2" style="width:0%"></div></div><span class="weight-pct" id="wp2">—</span></div>
+      <div class="weight-row"><span class="weight-name" id="wn3"></span><div class="weight-bar-bg"><div class="weight-bar" id="wb3" style="width:0%"></div></div><span class="weight-pct" id="wp3">—</span></div>
     </div>
   </div>
-
   <div class="alert alert-fail" id="ahpAlert"></div>
-
   <div class="btn-row">
-    <button class="btn btn-ghost" onclick="goTo('block-demo')">← Back</button>
-    <button class="btn btn-primary" id="ahpCheckBtn" onclick="checkCR()">Check my consistency →</button>
-    <button class="btn btn-primary" id="ahpNextBtn" onclick="proceedFromAHP()" style="display:none">Continue to Part 2 →</button>
+    <button class="btn btn-ghost" onclick="goTo('block-demo')" id="ahpBtnBack"></button>
+    <button class="btn btn-primary" id="ahpCheckBtn" onclick="checkCR()"></button>
+    <button class="btn btn-primary" id="ahpNextBtn" onclick="proceedFromAHP()" style="display:none"></button>
   </div>
 </div>
 
-<!-- ══ BLOCK 3B: SOCIAL ══ -->
+<!-- BLOCK 3B: SOCIAL -->
 <div class="section" id="block-social">
-  <div class="section-label">Block 3B of 4 — Social Acceptance Perceptions</div>
-  <h2 class="section-title">Professional Perceptions</h2>
-  <p class="section-desc">Rate your level of agreement with each statement on a scale from 1 (Strongly disagree) to 5 (Strongly agree). There are no right or wrong answers — we are interested in your professional judgment.</p>
-
-  <div class="alert alert-warn" id="ahpFailedNote" style="display:none">
-    Your AHP pairwise comparisons could not reach the required consistency threshold. Your social acceptance responses below remain a valuable contribution and will be included in the analysis.
-  </div>
-
-  <!-- Dim 1 -->
-  <p class="dim-header">Community &amp; end-user acceptance</p>
-  <table class="likert-table">
-    <thead>
-      <tr>
-        <th class="stmt-h">Statement</th>
-        <th>1<br><span style="font-weight:400;font-size:10px">SD</span></th>
-        <th>2<br><span style="font-weight:400;font-size:10px">D</span></th>
-        <th>3<br><span style="font-weight:400;font-size:10px">N</span></th>
-        <th>4<br><span style="font-weight:400;font-size:10px">A</span></th>
-        <th>5<br><span style="font-weight:400;font-size:10px">SA</span></th>
-      </tr>
-    </thead>
-    <tbody id="likertBody1"></tbody>
-  </table>
-
-  <!-- Dim 2 -->
-  <p class="dim-header" style="margin-top:24px">Expert &amp; professional perception</p>
-  <table class="likert-table">
-    <thead>
-      <tr>
-        <th class="stmt-h">Statement</th>
-        <th>1<br><span style="font-weight:400;font-size:10px">SD</span></th>
-        <th>2<br><span style="font-weight:400;font-size:10px">D</span></th>
-        <th>3<br><span style="font-weight:400;font-size:10px">N</span></th>
-        <th>4<br><span style="font-weight:400;font-size:10px">A</span></th>
-        <th>5<br><span style="font-weight:400;font-size:10px">SA</span></th>
-      </tr>
-    </thead>
-    <tbody id="likertBody2"></tbody>
-  </table>
-
-  <!-- Dim 3 -->
-  <p class="dim-header" style="margin-top:24px">Aesthetic &amp; design acceptance</p>
-  <table class="likert-table">
-    <thead>
-      <tr>
-        <th class="stmt-h">Statement</th>
-        <th>1<br><span style="font-weight:400;font-size:10px">SD</span></th>
-        <th>2<br><span style="font-weight:400;font-size:10px">D</span></th>
-        <th>3<br><span style="font-weight:400;font-size:10px">N</span></th>
-        <th>4<br><span style="font-weight:400;font-size:10px">A</span></th>
-        <th>5<br><span style="font-weight:400;font-size:10px">SA</span></th>
-      </tr>
-    </thead>
-    <tbody id="likertBody3"></tbody>
-  </table>
-
-  <!-- Dim 4 -->
-  <p class="dim-header" style="margin-top:24px">Occupant comfort, wellbeing &amp; cultural connection</p>
-  <table class="likert-table">
-    <thead>
-      <tr>
-        <th class="stmt-h">Statement</th>
-        <th>1<br><span style="font-weight:400;font-size:10px">SD</span></th>
-        <th>2<br><span style="font-weight:400;font-size:10px">D</span></th>
-        <th>3<br><span style="font-weight:400;font-size:10px">N</span></th>
-        <th>4<br><span style="font-weight:400;font-size:10px">A</span></th>
-        <th>5<br><span style="font-weight:400;font-size:10px">SA</span></th>
-      </tr>
-    </thead>
-    <tbody id="likertBody4"></tbody>
-  </table>
-
+  <div class="section-label" id="lbl3b"></div>
+  <h2 class="section-title" id="ttl3b"></h2>
+  <p class="section-desc" id="desc3b"></p>
+  <div class="alert alert-warn" id="ahpFailedNote" style="display:none"></div>
+  <p class="dim-header" id="dim1hdr"></p>
+  <table class="likert-table"><thead id="lth1"></thead><tbody id="likertBody1"></tbody></table>
+  <p class="dim-header" id="dim2hdr" style="margin-top:24px"></p>
+  <table class="likert-table"><thead id="lth2"></thead><tbody id="likertBody2"></tbody></table>
+  <p class="dim-header" id="dim3hdr" style="margin-top:24px"></p>
+  <table class="likert-table"><thead id="lth3"></thead><tbody id="likertBody3"></tbody></table>
+  <p class="dim-header" id="dim4hdr" style="margin-top:24px"></p>
+  <table class="likert-table"><thead id="lth4"></thead><tbody id="likertBody4"></tbody></table>
   <hr class="section-divider">
-
   <div class="field-group">
-    <label class="field-label">What are the most significant barriers to social acceptance of date palm materials in Gulf construction? <span class="opt">(optional)</span></label>
-    <textarea class="field-textarea" id="oq1" placeholder="Share your thoughts..."></textarea>
+    <label class="field-label" id="oq1Lbl"></label>
+    <textarea class="field-textarea" id="oq1" rows="3"></textarea>
   </div>
-
   <div class="field-group">
-    <label class="field-label">What conditions would most effectively accelerate adoption of date palm materials? <span class="opt">(optional)</span></label>
-    <textarea class="field-textarea" id="oq2" placeholder="Share your thoughts..."></textarea>
+    <label class="field-label" id="oq2Lbl"></label>
+    <textarea class="field-textarea" id="oq2" rows="3"></textarea>
   </div>
-
-  <div class="alert alert-fail" id="socialAlert">Please answer all Likert questions before submitting.</div>
-
+  <div class="alert alert-fail" id="socialAlert"></div>
   <div class="btn-row">
-    <button class="btn btn-ghost" id="socialBackBtn" onclick="goTo('block-ahp')">← Back</button>
-    <button class="btn btn-submit" onclick="submitSocial()">Submit Survey ✓</button>
+    <button class="btn btn-ghost" id="socialBackBtn" onclick="goTo('block-ahp')"></button>
+    <button class="btn btn-submit" onclick="submitSocial()" id="submitBtn"></button>
   </div>
 </div>
 
-<!-- ══ BLOCK 4: THANK YOU ══ -->
+<!-- BLOCK 4: THANK YOU -->
 <div class="section" id="block-thankyou">
   <div class="thankyou">
     <div class="thankyou-icon">✓</div>
-    <h2 class="thankyou-title">Thank you for your contribution</h2>
-    <p class="thankyou-sub">Your expert judgment has been recorded and will contribute to the research on date palm biomass materials in Gulf construction practice.</p>
-    <div class="ref-code" id="refCode">Saving...</div>
-    <p style="font-size:12px;color:var(--text-muted);margin-bottom:32px">Please keep this reference code for your records.</p>
+    <h2 class="thankyou-title" id="tyTitle"></h2>
+    <p class="thankyou-sub" id="tySub"></p>
+    <div class="ref-code" id="refCode">...</div>
+    <p style="font-size:12px;color:var(--text-muted);margin-bottom:32px" id="refNote"></p>
     <div id="summaryCards"></div>
   </div>
 </div>
-
-</div><!-- /survey-shell -->
-
-<!-- Saving overlay -->
-<div class="saving-overlay" id="savingOverlay">
-  <div class="spinner"></div>
-  <p style="font-size:14px;color:var(--text-muted)">Saving your response...</p>
 </div>
 
-<!-- ══ JAVASCRIPT ══════════════════════════════════════════════════ -->
+<div class="saving-overlay" id="savingOverlay">
+  <div class="spinner"></div>
+  <p style="font-size:14px;color:var(--text-muted)" id="savingMsg">Saving...</p>
+</div>
+
 <script>
-// ── CONFIG ─────────────────────────────────────────────────────────
-// Replace with your Google Apps Script Web App URL after setup
-// See README.md for instructions
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyTGTcxX-MRkWZq_py3ain3wB4BSGt4wWnuHjWUEU-OFwfd451L8qQozYn-ejxMM_eB/exec';
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbyTGTcxX-MRkWZq_py3ain3wB4BSGt4wWnuHjWUEU-OFwfd451L8qQozYn-ejxMM_eB/exec';
+const RI3=0.58, MAX_ATTEMPTS=2;
 
-// ── AHP CONSTANTS ───────────────────────────────────────────────────
-const RI3  = 0.58;
-const MAX_ATTEMPTS = 2;
-const CRIT = ['Technical Performance','Environmental Impact','Supply Chain'];
-const PAIRS = [
-  {left:'Environmental Impact', right:'Technical Performance'},
-  {left:'Supply Chain',         right:'Technical Performance'},
-  {left:'Supply Chain',         right:'Environmental Impact'},
-];
-
-// ── LIKERT STATEMENTS ───────────────────────────────────────────────
-const LIKERT = {
-  1:[
-    {id:'S1', text:'Local communities in Saudi Arabia and the Gulf would be receptive to living or working in buildings incorporating date palm materials.'},
-    {id:'S2', text:'Building clients and developers in the Gulf are likely to accept date palm biomass materials as a viable construction option.'},
-    {id:'S3', text:'End users are likely to perceive date palm materials positively due to the cultural significance of the date palm in the region.'},
+const T={
+en:{
+  htmlDir:'ltr',bodyClass:'en',
+  langToggle:'العربية',
+  heroEyebrow:'King Fahd University of Petroleum and Minerals · Saudi Arabia',
+  heroTitle:'Expert Weighting Survey<br>Date Palm Biomass as a Building Material',
+  heroSub:'Your professional judgment will shape the evaluation criteria for date palm biomass as a building material in Saudi Arabia.',
+  chip1:'10–15 min',chip2:'AHP pairwise comparisons',chip3:'Social acceptance perceptions',
+  lbl1:'Block 1 of 4',ttl1:'About This Research',
+  introBgTitle:'Research Background',
+  introBg1:'Saudi Arabia is one of the world\'s largest producers of date palms, generating large amounts of agricultural biomass — including fronds, fibre, and trunk material — annually. The majority of this waste is burned or landfilled, representing both an environmental burden and a missed opportunity.',
+  introBg2:'This study investigates the potential of date palm biomass as a building material in the Saudi context, specifically for interior applications. To support practical adoption, the evaluation framework is embedded within a Building Information Modelling (BIM) environment, enabling architects and designers to assess materials directly within their design workflow rather than through a separate process.',
+  introBg3:'This research is conducted in partial fulfilment of a Master\'s degree in Sustainability and Environmental Management at King Fahd University of Petroleum and Minerals (KFUPM).',
+  introFocusTitle:'What This Survey Asks',
+  introFocus1:'This survey serves two purposes. First, it captures expert judgment on the relative importance of three evaluation criteria through pairwise comparisons using the Analytic Hierarchy Process (AHP):',
+  cc1:'Technical Performance <span>· strength, thermal conductivity, water absorption</span>',
+  cc2:'Environmental Impact <span>· embodied carbon, embodied energy</span>',
+  cc3:'Supply Chain <span>· local availability</span>',
+  introNote:'Second, it gathers professional perceptions on the social and market acceptance of date palm materials in Saudi construction practice. Your responses directly shape the framework\'s evaluation logic and the study\'s findings on adoption readiness in Saudi Arabia.',
+  consentBoxTitle:'Informed Consent',
+  consentBoxBody:'Your responses are confidential and used solely for academic research. The survey has two parts. Part 1 asks you to compare the three criteria in pairs — a Consistency Ratio (CR) is calculated in real time, and if your CR exceeds 0.10 you will be given one opportunity to revise. Part 2 asks about your professional perceptions of date palm materials in the built environment.',
+  consentQ:'Do you consent to participate in this study?',
+  consentAgree:'I agree — proceed to the survey',
+  consentDisagree:'I do not agree — exit the survey',
+  consentAlert:'Please select an option to continue.',
+  consentBtn:'Continue →',
+  exitTitle:'Thank you for your time',
+  exitSub:'We respect your decision. You may close this window.',
+  lbl2:'Block 2 of 4 — Expert Profile',ttl2:'Your Professional Background',
+  desc2:'This information is used to describe the expert panel in the research report. All fields except name are required.',
+  dNameLbl:'Name (optional)',dNamePH:'Your full name',
+  dSectorLbl:'Which best describes your current professional context?',
+  dSectorOther:'Please specify',
+  dSector:['Academic or research institution','Architectural practice','Engineering consultancy','Construction or contracting','Government or public authority','Other'],
+  dDomainLbl:'What is your primary area of expertise? (select all that apply)',
+  dDomainHint:'This establishes the credibility of the expert panel for the criteria being evaluated.',
+  dDomainOther:'Please specify',
+  dDomain:['Sustainable building materials or green construction','BIM and digital design','Structural or civil engineering','Construction management or supply chain','Interior design or finish specification','Environmental assessment or LCA','Agricultural science or date palm agronomy','Other'],
+  dExpLbl:'Years of professional experience',
+  dExp:['Less than 5 years','5–10 years','11–20 years','More than 20 years'],
+  dQualLbl:'Highest academic qualification',
+  dQual:['Bachelor\'s degree','Master\'s degree','Doctorate (PhD or equivalent)','Professional certification','Other'],
+  dFamDpLbl:'Familiarity with date palm as a building material',
+  dFamDp:['No prior knowledge','General awareness only','Moderate — I have read or worked on related topics','High — I have significant research or practical experience'],
+  dCountryLbl:'Country of practice',
+  dCountry:['Saudi Arabia','Other GCC country','Outside the GCC region'],
+  dFamAhpLbl:'Familiarity with multi-criteria decision analysis (AHP, TOPSIS, MCDM)',
+  dFamAhp:['Not familiar','Somewhat familiar — I have heard of these methods','Familiar — I have used or studied these methods','Very familiar — I regularly apply these methods'],
+  demoAlert:'Please answer all required questions before continuing.',
+  demoBtnBack:'← Back',demoBtnNext:'Continue to AHP →',
+  lbl3:'Block 3 of 4 — AHP Pairwise Comparisons',ttl3:'Criteria Weighting',
+  desc3:'For each pair of criteria below, move the slider to indicate which criterion you consider more important, and by how much. Leave centred for equal importance.',
+  saatBox:'<strong>Saaty scale:</strong> &nbsp;1 = Equal &nbsp;·&nbsp; 3 = Moderate &nbsp;·&nbsp; 5 = Strong &nbsp;·&nbsp; 7 = Very strong &nbsp;·&nbsp; 9 = Extreme preference',
+  pairVs:'vs',
+  pairs:[
+    {left:'Environmental Impact',right:'Technical Performance',slL:'← Env. preferred (9×)',slM:'Equal',slR:'Tech. preferred (9×) →'},
+    {left:'Supply Chain',right:'Technical Performance',slL:'← Supply preferred (9×)',slM:'Equal',slR:'Tech. preferred (9×) →'},
+    {left:'Supply Chain',right:'Environmental Impact',slL:'← Supply preferred (9×)',slM:'Equal',slR:'Env. preferred (9×) →'},
   ],
-  2:[
-    {id:'S4', text:'The architecture and engineering professions in the Gulf are becoming more open to bio-based and natural building materials such as date palm.'},
-    {id:'S5', text:'I would personally consider specifying or recommending date palm biomass materials in a design or construction project.'},
-    {id:'S6', text:'The use of date palm materials in buildings would be viewed positively by other professionals in my field.'},
+  sliderEqual:'Equal importance (1)',
+  sliderPref:(side,mag)=>`${side} preferred (${mag}×)`,
+  crLabelOk:'Consistency ratio — acceptable',
+  crLabelFail:'Consistency ratio — please revise',
+  crLabelGiveUp:'Consistency could not be achieved',
+  crMsgOk:(cr)=>`CR = ${cr}. Your judgments are consistent. Please click Continue to proceed.`,
+  crMsgFail:(cr,wp)=>`CR = ${cr} exceeds 0.10. The most inconsistent comparison is: ${wp}. Please reconsider that judgment and check again.`,
+  crMsgGiveUp:(cr)=>`CR = ${cr}. Your pairwise comparison data will not be included in the weighting analysis. Your social acceptance responses remain a valuable contribution. Please click Continue below.`,
+  crAttemptRemain:(a,m)=>`Attempt ${a} of ${m}. You have 1 attempt remaining.`,
+  crAttemptDone:'Both attempts used.',
+  crAttemptOk:(a)=>a>0?`Consistency achieved after ${a} revision(s).`:'',
+  wNames:['Technical Performance','Environmental Impact','Supply Chain'],
+  worstLabels:['Environmental Impact vs Technical Performance','Supply Chain vs Technical Performance','Supply Chain vs Environmental Impact'],
+  ahpBtnBack:'← Back',ahpCheckBtn:'Check my consistency →',ahpNextBtn:'Continue to Part 2 →',
+  lbl3b:'Block 3B of 4 — Social Acceptance Perceptions',ttl3b:'Professional Perceptions',
+  desc3b:'Rate your level of agreement with each statement on a scale from 1 (Strongly disagree) to 5 (Strongly agree). There are no right or wrong answers — we are interested in your professional judgment.',
+  ahpFailedNote:'Your AHP pairwise comparisons could not reach the required consistency threshold. Your social acceptance responses below remain a valuable contribution and will be included in the analysis.',
+  dimHeaders:['Community & end-user acceptance','Expert & professional perception','Aesthetic & design acceptance','Occupant comfort, wellbeing & cultural connection'],
+  likertHdr:['Statement','1<br><small>SD</small>','2<br><small>D</small>','3<br><small>N</small>','4<br><small>A</small>','5<br><small>SA</small>'],
+  likert:{
+    1:[{id:'S1',text:'Local communities in Saudi Arabia would be receptive to living or working in buildings incorporating date palm materials.'},{id:'S2',text:'Building clients and developers in Saudi Arabia are likely to accept date palm biomass materials as a viable construction option.'},{id:'S3',text:'End users are likely to perceive date palm materials positively due to the cultural significance of the date palm in the region.'}],
+    2:[{id:'S4',text:'The architecture and engineering professions in Saudi Arabia are becoming more open to bio-based and natural building materials such as date palm.'},{id:'S5',text:'I would personally consider specifying or recommending date palm biomass materials in a design or construction project.'},{id:'S6',text:'The use of date palm materials in buildings would be viewed positively by other professionals in my field.'}],
+    3:[{id:'S7',text:'Date palm materials can be integrated into contemporary architectural design in a way that is aesthetically appropriate for Saudi built environments.'},{id:'S8',text:'The natural appearance and texture of date palm materials can meet the design standards expected in Saudi construction practice.'},{id:'S9',text:'Design professionals in Saudi Arabia have sufficient tools and precedents to incorporate date palm materials into their projects.'}],
+    4:[{id:'S10',text:'The use of natural and heritage-connected materials such as date palm in interior spaces contributes positively to occupants\' sense of cultural identity and place belonging in the Saudi context.'},{id:'S11',text:'Building occupants in Saudi interior environments are likely to develop a positive psychological and cultural connection to date palm materials, given its significance in regional heritage.'},{id:'S12',text:'Building users are likely to feel confident in the safety and healthiness of date palm materials in their living and working environments.'}]
+  },
+  oq1Lbl:'What are the most significant barriers to social acceptance of date palm materials in Saudi construction? (optional)',
+  oq2Lbl:'What conditions would most effectively accelerate adoption of date palm materials in Saudi Arabia? (optional)',
+  oqPH:'Share your thoughts...',
+  socialAlert:'Please answer all Likert questions before submitting.',
+  socialBackBtn:'← Back',submitBtn:'Submit Survey ✓',
+  tyTitle:'Thank you for your contribution',
+  tySub:'Your expert judgment has been recorded and will contribute to the research on date palm biomass materials in Saudi construction practice.',
+  refNote:'Please keep this reference code for your records.',
+  savingMsg:'Saving your response...',
+  summaryAhpTitle:'AHP criteria weights',
+  summaryTech:'Technical Performance',summaryEnv:'Environmental Impact',summarySupply:'Supply Chain (Local Availability)',
+  summaryCR:'Consistency Ratio',
+  summarySocialTitle:'Social acceptance means',
+  sumCommunity:'Community acceptance',sumProfessional:'Professional perception',
+  sumAesthetic:'Aesthetic acceptance',sumWellbeing:'Occupant wellbeing & cultural connection',
+  summaryFailNote:'Your social acceptance responses have been recorded and will be included in the analysis. The AHP pairwise comparison data could not reach the required consistency threshold and will not be included in the criteria weighting analysis. Your participation is genuinely appreciated.',
+},
+ar:{
+  htmlDir:'rtl',bodyClass:'ar',
+  langToggle:'English',
+  heroEyebrow:'جامعة الملك فهد للبترول والمعادن · المملكة العربية السعودية',
+  heroTitle:'استبيان تحديد الأوزان النسبية<br>لمعايير تقييم المواد الحيوية المستخرجة من النخيل كمواد بناء',
+  heroSub:'سيُسهم حكمك المهني في تحديد معايير تقييم المواد الحيوية المستخرجة من النخيل في ممارسات البناء في المملكة العربية السعودية.',
+  chip1:'١٠–١٥ دقيقة',chip2:'مقارنات AHP الزوجية',chip3:'تصورات القبول الاجتماعي',
+  lbl1:'القسم ١ من ٤',ttl1:'عن هذا البحث',
+  introBgTitle:'خلفية الدراسة',
+  introBg1:'تُعد المملكة العربية السعودية من أكبر الدول المنتجة لنخيل التمر في العالم، حيث ينتج عنها سنوياً كميات كبيرة من المخلفات الزراعية، بما في ذلك السعف والألياف وجذوع النخيل. ويتم التخلص من معظم هذه المخلفات عن طريق الحرق أو الطمر، مما يشكل عبئاً بيئياً ويهدر فرصة واعدة للاستفادة منها.',
+  introBg2:'تستكشف هذه الدراسة إمكانات استخدام المواد الحيوية المستخرجة من النخيل كمادة بناء في المملكة العربية السعودية، مع التركيز على تطبيقاتها في التصميمات الداخلية. ولدعم التطبيق العملي لهذه المواد، تم دمج إطار التقييم ضمن بيئة نمذجة معلومات البناء (BIM)، بما يتيح للمعماريين والمصممين تقييم المواد مباشرة أثناء عملية التصميم بدلاً من اللجوء إلى إجراءات تقييم منفصلة.',
+  introBg3:'يُجرى هذا البحث استكمالاً جزئياً لمتطلبات الحصول على درجة ماجستير الاستدامة والإدارة البيئية في جامعة الملك فهد للبترول والمعادن.',
+  introFocusTitle:'ما الذي يتناوله هذا الاستبيان؟',
+  introFocus1:'يهدف هذا الاستبيان إلى تحقيق غايتين رئيسيتين. أولاً: جمع آراء الخبراء حول الأهمية النسبية لثلاثة معايير تقييم من خلال المقارنات الزوجية باستخدام أسلوب التحليل الهرمي (AHP):',
+  cc1:'الأداء التقني <span>· المتانة، التوصيل الحراري، امتصاص الماء</span>',
+  cc2:'الأثر البيئي <span>· الكربون المتجسد، الطاقة المتجسدة</span>',
+  cc3:'سلسلة الإمداد <span>· التوافر المحلي للمواد</span>',
+  introNote:'ثانياً: استقصاء آراء المختصين بشأن مستوى القبول الاجتماعي والسوقي للمواد الحيوية المستخرجة من النخيل في قطاع البناء بالمملكة العربية السعودية. ستسهم إجاباتكم بشكل مباشر في بناء منطق إطار التقييم وتقييم مدى جاهزية تبني هذه المواد في المملكة العربية السعودية.',
+  consentBoxTitle:'الموافقة على المشاركة',
+  consentBoxBody:'ستُعامل جميع الإجابات بسرية تامة، ولن تُستخدم إلا لأغراض البحث العلمي. يتكون الاستبيان من جزأين: الجزء الأول يتطلب إجراء مقارنات زوجية بين المعايير الثلاثة، وسيتم حساب نسبة الاتساق (CR) بشكل فوري، وفي حال تجاوزت (0.10) ستُمنح فرصة واحدة للمراجعة. الجزء الثاني يتناول تصوراتكم المهنية حول استخدام المواد الحيوية المستخرجة من النخيل في البيئة المبنية.',
+  consentQ:'هل توافق على المشاركة في هذه الدراسة؟',
+  consentAgree:'أوافق على المشاركة والانتقال إلى الاستبيان.',
+  consentDisagree:'لا أوافق على المشاركة وإنهاء الاستبيان.',
+  consentAlert:'يرجى اختيار أحد الخيارات للمتابعة.',
+  consentBtn:'متابعة ←',
+  exitTitle:'شكراً لوقتك',
+  exitSub:'نحترم قرارك. يمكنك إغلاق هذه النافذة.',
+  lbl2:'القسم ٢ من ٤ — الملف المهني',ttl2:'خلفيتك المهنية',
+  desc2:'تُستخدم المعلومات التالية لوصف خصائص عينة الخبراء المشاركة في البحث. جميع الحقول مطلوبة باستثناء الاسم.',
+  dNameLbl:'الاسم (اختياري)',dNamePH:'اسمك الكامل',
+  dSectorLbl:'أيٌّ من الخيارات التالية يصف وضعك المهني الحالي بشكل أفضل؟',
+  dSectorOther:'يرجى التحديد',
+  dSector:['جامعة أو مؤسسة بحثية','مكتب أو شركة معمارية','مكتب أو شركة استشارات هندسية','شركة مقاولات أو تنفيذ مشاريع','جهة حكومية أو هيئة عامة','أخرى'],
+  dDomainLbl:'ما مجال خبرتك الرئيسي؟ (اختر كل ما ينطبق)',
+  dDomainHint:'يُحدد هذا مصداقية لجنة الخبراء فيما يتعلق بالمعايير المُقيَّمة.',
+  dDomainOther:'يرجى التحديد',
+  dDomain:['مواد البناء المستدامة أو البناء الأخضر','نمذجة معلومات البناء (BIM) والتصميم الرقمي','الهندسة الإنشائية أو المدنية','إدارة البناء أو سلسلة التوريد','التصميم الداخلي أو مواصفات التشطيب','التقييم البيئي أو تقييم دورة الحياة','العلوم الزراعية أو زراعة النخيل','أخرى'],
+  dExpLbl:'سنوات الخبرة المهنية',
+  dExp:['أقل من ٥ سنوات','٥–١٠ سنوات','١١–٢٠ سنة','أكثر من ٢٠ سنة'],
+  dQualLbl:'أعلى مؤهل أكاديمي',
+  dQual:['درجة البكالوريوس','درجة الماجستير','درجة الدكتوراه أو ما يعادلها','شهادة مهنية','أخرى'],
+  dFamDpLbl:'مدى الإلمام بالمواد الحيوية المستخرجة من النخيل كمواد بناء',
+  dFamDp:['لا توجد معرفة مسبقة','وعي عام فقط','متوسط — اطلعت على موضوعات ذات صلة أو عملت فيها','مرتفع — لديّ خبرة بحثية أو عملية واسعة'],
+  dCountryLbl:'بلد الممارسة المهنية',
+  dCountry:['المملكة العربية السعودية','دولة خليجية أخرى','خارج منطقة الخليج'],
+  dFamAhpLbl:'مدى الإلمام بتحليل القرار متعدد المعايير (AHP، TOPSIS، MCDM)',
+  dFamAhp:['غير مُلِمّ','مُلِمّ نوعاً ما — سمعت بهذه الأساليب','مُلِمّ — استخدمت هذه الأساليب أو درستها','مُلِمّ جداً — أطبّق هذه الأساليب بانتظام'],
+  demoAlert:'يرجى الإجابة على جميع الأسئلة المطلوبة قبل المتابعة.',
+  demoBtnBack:'→ رجوع',demoBtnNext:'المتابعة إلى AHP ←',
+  lbl3:'القسم ٣ من ٤ — المقارنات الزوجية AHP',ttl3:'ترجيح المعايير',
+  desc3:'لكل زوج من المعايير أدناه، حرّك شريط التمرير للإشارة إلى المعيار الأكثر أهمية وبأي مقدار. اترك الشريط في المنتصف للإشارة إلى التساوي في الأهمية.',
+  saatBox:'<strong>مقياس ساعتي:</strong> &nbsp;١ = متساوٍ &nbsp;·&nbsp; ٣ = معتدل &nbsp;·&nbsp; ٥ = قوي &nbsp;·&nbsp; ٧ = قوي جداً &nbsp;·&nbsp; ٩ = تفضيل مطلق<br><small>ملاحظة: يعمل شريط التمرير من اليسار إلى اليمين — الجانب الأيسر = تفضيل المعيار الأيسر، الجانب الأيمن = تفضيل المعيار الأيمن.</small>',
+  pairVs:'مقابل',
+  pairs:[
+    {left:'الأثر البيئي',right:'الأداء التقني',slL:'← الأثر البيئي مُفضَّل (٩×)',slM:'متساوٍ',slR:'الأداء التقني مُفضَّل (٩×) →'},
+    {left:'سلسلة الإمداد',right:'الأداء التقني',slL:'← سلسلة الإمداد مُفضَّلة (٩×)',slM:'متساوٍ',slR:'الأداء التقني مُفضَّل (٩×) →'},
+    {left:'سلسلة الإمداد',right:'الأثر البيئي',slL:'← سلسلة الإمداد مُفضَّلة (٩×)',slM:'متساوٍ',slR:'الأثر البيئي مُفضَّل (٩×) →'},
   ],
-  3:[
-    {id:'S7', text:'Date palm materials can be integrated into contemporary architectural design in a way that is aesthetically appropriate for Gulf built environments.'},
-    {id:'S8', text:'The natural appearance and texture of date palm materials can meet the design standards expected in Gulf construction practice.'},
-    {id:'S9', text:'Design professionals in the Gulf have sufficient tools and precedents to incorporate date palm materials into their projects.'},
-  ],
-  4:[
-    {id:'S10', text:'The use of natural and heritage-connected materials such as date palm in interior spaces contributes positively to occupants\u2019 sense of cultural identity and place belonging in the Gulf context.'},
-    {id:'S11', text:'Building occupants in Gulf interior environments are likely to develop a positive psychological and cultural connection to date palm materials specifically, given its significance in regional heritage.'},
-    {id:'S12', text:'Building users are likely to feel confident in the safety and healthiness of date palm materials in their living and working environments.'},
-  ]
-};
+  sliderEqual:'أهمية متساوية (١)',
+  sliderPref:(side,mag)=>`${side} مُفضَّل (${mag}×)`,
+  crLabelOk:'معامل الاتساق — مقبول',
+  crLabelFail:'معامل الاتساق — يرجى المراجعة',
+  crLabelGiveUp:'تعذّر تحقيق الاتساق',
+  crMsgOk:(cr)=>`CR = ${cr}. أحكامك متسقة. يرجى النقر على متابعة للمضي قدماً.`,
+  crMsgFail:(cr,wp)=>`CR = ${cr} يتجاوز 0.10. المقارنة الأكثر تناقضاً هي: ${wp}. يرجى إعادة النظر في ذلك الحكم والتحقق مرة أخرى.`,
+  crMsgGiveUp:(cr)=>`CR = ${cr}. لن تُدرج بيانات مقارنتك الزوجية في تحليل الترجيح. ستظل إجاباتك على أسئلة القبول الاجتماعي مساهمة قيّمة. يرجى النقر على متابعة.`,
+  crAttemptRemain:(a,m)=>`المحاولة ${a} من ${m}. لديك محاولة واحدة متبقية.`,
+  crAttemptDone:'استُنفدت كلتا المحاولتين.',
+  crAttemptOk:(a)=>a>0?`تحقّق الاتساق بعد ${a} مراجعة.`:'',
+  wNames:['الأداء التقني','الأثر البيئي','سلسلة الإمداد'],
+  worstLabels:['الأثر البيئي مقابل الأداء التقني','سلسلة الإمداد مقابل الأداء التقني','سلسلة الإمداد مقابل الأثر البيئي'],
+  ahpBtnBack:'→ رجوع',ahpCheckBtn:'تحقق من اتساقي ←',ahpNextBtn:'المتابعة إلى الجزء الثاني ←',
+  lbl3b:'القسم ٣ب من ٤ — تصورات القبول الاجتماعي',ttl3b:'التصورات المهنية',
+  desc3b:'قيّم مستوى موافقتك على كل عبارة على مقياس من ١ (لا أوافق بشدة) إلى ٥ (أوافق بشدة). لا توجد إجابات صحيحة أو خاطئة — نحن مهتمون بحكمك المهني.',
+  ahpFailedNote:'لم تبلغ مقارناتك الزوجية في AHP العتبة المطلوبة للاتساق. ستظل إجاباتك على أسئلة القبول الاجتماعي مساهمة قيّمة وستُدرج في التحليل.',
+  dimHeaders:['قبول المجتمع والمستخدم النهائي','تصور الخبراء والمهنيين','القبول الجمالي والتصميمي','رفاهية المستخدمين والارتباط الثقافي'],
+  likertHdr:['العبارة','١<br><small>لا أوافق بشدة</small>','٢<br><small>لا أوافق</small>','٣<br><small>محايد</small>','٤<br><small>أوافق</small>','٥<br><small>أوافق بشدة</small>'],
+  likert:{
+    1:[{id:'S1',text:'من المرجح أن يتقبل أفراد المجتمع في المملكة العربية السعودية العيش أو العمل في مبانٍ تستخدم مواد مستخرجة من النخيل.'},{id:'S2',text:'من المرجح أن يقبل العملاء والمطورون العقاريون في المملكة العربية السعودية المواد المستخرجة من النخيل بوصفها خياراً مناسباً للبناء.'},{id:'S3',text:'من المرجح أن ينظر المستخدمون النهائيون بإيجابية إلى المواد المستخرجة من النخيل نظراً للمكانة الثقافية التي يحظى بها النخيل في المنطقة.'}],
+    2:[{id:'S4',text:'تتجه مهن العمارة والهندسة في المملكة العربية السعودية نحو انفتاح أكبر على مواد البناء الحيوية والطبيعية كمواد النخيل.'},{id:'S5',text:'سأفكر شخصياً في التوصية باستخدام المواد الحيوية المستخرجة من النخيل في مشروع تصميم أو إنشاء.'},{id:'S6',text:'من المرجح أن ينظر المهنيون الآخرون في مجالي بإيجابية إلى استخدام المواد المستخرجة من النخيل في المباني.'}],
+    3:[{id:'S7',text:'يمكن دمج المواد المستخرجة من النخيل في التصاميم المعمارية المعاصرة بطريقة تتناسب جمالياً مع البيئة العمرانية في المملكة العربية السعودية.'},{id:'S8',text:'يمكن للمظهر الطبيعي والملمس الخاص بالمواد المستخرجة من النخيل أن يلبي المعايير التصميمية المتوقعة في قطاع البناء السعودي.'},{id:'S9',text:'يمتلك المتخصصون في التصميم بالمملكة العربية السعودية الأدوات والخبرات المرجعية الكافية لدمج المواد المستخرجة من النخيل في مشاريعهم.'}],
+    4:[{id:'S10',text:'يسهم استخدام المواد الطبيعية المرتبطة بالتراث، مثل المواد المستخرجة من النخيل، في الفراغات الداخلية في تعزيز شعور المستخدمين بالهوية الثقافية والانتماء للمكان في السياق السعودي.'},{id:'S11',text:'من المرجح أن يكون لدى شاغلي المباني في البيئات الداخلية السعودية ارتباط نفسي وثقافي إيجابي بالمواد المستخرجة من النخيل نظراً لأهميتها في التراث المحلي.'},{id:'S12',text:'من المرجح أن يشعر مستخدمو المباني بالثقة تجاه سلامة وصحة المواد المستخرجة من النخيل في بيئاتهم المعيشية والعملية.'}]
+  },
+  oq1Lbl:'ما أبرز العوائق التي قد تحد من القبول الاجتماعي للمواد الحيوية المستخرجة من النخيل في قطاع البناء بالمملكة العربية السعودية؟ (اختياري)',
+  oq2Lbl:'ما الإجراءات أو العوامل التي يمكن أن تسهم في تسريع تبني المواد الحيوية المستخرجة من النخيل في المملكة العربية السعودية؟ (اختياري)',
+  oqPH:'شاركنا أفكارك...',
+  socialAlert:'يرجى الإجابة على جميع أسئلة المقياس قبل الإرسال.',
+  socialBackBtn:'→ رجوع',submitBtn:'إرسال الاستبيان ✓',
+  tyTitle:'شكراً لمساهمتكم',
+  tySub:'تم تسجيل آرائكم وأحكامكم المهنية، وستسهم في دعم البحث المتعلق باستخدام المواد الحيوية المستخرجة من النخيل في قطاع البناء بالمملكة العربية السعودية.',
+  refNote:'يرجى الاحتفاظ برمز المرجع الخاص بكم للرجوع إليه عند الحاجة.',
+  savingMsg:'جارٍ حفظ إجابتك...',
+  summaryAhpTitle:'أوزان معايير AHP',
+  summaryTech:'الأداء التقني',summaryEnv:'الأثر البيئي',summarySupply:'سلسلة الإمداد (التوافر المحلي)',
+  summaryCR:'معامل الاتساق',
+  summarySocialTitle:'متوسطات القبول الاجتماعي',
+  sumCommunity:'قبول المجتمع',sumProfessional:'التصور المهني',
+  sumAesthetic:'القبول الجمالي',sumWellbeing:'رفاهية المستخدمين والارتباط الثقافي',
+  summaryFailNote:'تم تسجيل إجاباتك على أسئلة القبول الاجتماعي وستُدرج في التحليل. لم تبلغ بيانات المقارنة الزوجية في AHP العتبة المطلوبة للاتساق ولن تُدرج في تحليل ترجيح المعايير. نقدّر مشاركتك.',
+}};
 
-// ── STATE ───────────────────────────────────────────────────────────
-let state = {
-  ahpAttempts:  0,
-  ahpStatus:    'pending',  // 'passed' | 'failed'
-  ahpCR:        0,
-  ahpWeights:   [0.333,0.333,0.334],
-  ahpRatios:    [1,1,1],
-  currentBlock: 'block-consent',
-};
+let lang='en';
+let state={ahpAttempts:0,ahpStatus:'pending',ahpCR:0,ahpWeights:[0.333,0.333,0.334],ahpRatios:[1,1,1],currentBlock:'block-lang'};
+const BLOCK_ORDER=['block-lang','block-consent','block-demo','block-ahp','block-social','block-thankyou'];
 
-// ── PROGRESS ────────────────────────────────────────────────────────
-const BLOCK_ORDER = ['block-consent','block-demo','block-ahp','block-social','block-thankyou'];
-function setProgress(blockId){
-  const idx = BLOCK_ORDER.indexOf(blockId);
-  const pct = Math.round((idx / (BLOCK_ORDER.length-1)) * 100);
-  document.getElementById('progressBar').style.width = pct+'%';
-  document.getElementById('progressPct').textContent  = pct+'%';
+function chooseLang(l){
+  lang=l;
+  const t=T[l];
+  document.getElementById('htmlRoot').setAttribute('lang',l);
+  document.getElementById('htmlRoot').setAttribute('dir',t.htmlDir);
+  document.body.className=t.bodyClass;
+  applyTranslations();
+  goTo('block-consent');
+}
+function switchLang(){chooseLang(lang==='en'?'ar':'en');}
+
+function applyTranslations(){
+  const t=T[lang];
+  document.getElementById('langToggleBtn').textContent=t.langToggle;
+  document.getElementById('heroEyebrow').textContent=t.heroEyebrow;
+  document.getElementById('heroTitle').innerHTML=t.heroTitle;
+  document.getElementById('heroSub').textContent=t.heroSub;
+  document.getElementById('chip1').textContent=t.chip1;
+  document.getElementById('chip2').textContent=t.chip2;
+  document.getElementById('chip3').textContent=t.chip3;
+  document.getElementById('lbl1').textContent=t.lbl1;
+  document.getElementById('ttl1').textContent=t.ttl1;
+  document.getElementById('introBgTitle').textContent=t.introBgTitle;
+  document.getElementById('introBg1').textContent=t.introBg1;
+  document.getElementById('introBg2').textContent=t.introBg2;
+  document.getElementById('introBg3').textContent=t.introBg3;
+  document.getElementById('introFocusTitle').textContent=t.introFocusTitle;
+  document.getElementById('introFocus1').textContent=t.introFocus1;
+  document.getElementById('cc1').innerHTML=t.cc1;
+  document.getElementById('cc2').innerHTML=t.cc2;
+  document.getElementById('cc3').innerHTML=t.cc3;
+  document.getElementById('introNote').textContent=t.introNote;
+  document.getElementById('consentBox').innerHTML='<strong>'+t.consentBoxTitle+'</strong><br><br>'+t.consentBoxBody;
+  document.getElementById('consentQ').textContent=t.consentQ;
+  buildRadios('consentRadios',[t.consentAgree,t.consentDisagree],'consent',false,null,null);
+  document.getElementById('consentAlert').textContent=t.consentAlert;
+  document.getElementById('consentBtn').textContent=t.consentBtn;
+  document.getElementById('lbl2').textContent=t.lbl2;
+  document.getElementById('ttl2').textContent=t.ttl2;
+  document.getElementById('desc2').textContent=t.desc2;
+  document.getElementById('dNameLbl').textContent=t.dNameLbl;
+  document.getElementById('d_name').placeholder=t.dNamePH;
+  document.getElementById('dSectorLbl').textContent=t.dSectorLbl;
+  buildRadios('dSectorOpts',t.dSector,'d_sector',false,'d_sector_other',t.dSectorOther);
+  document.getElementById('dDomainLbl').textContent=t.dDomainLbl;
+  document.getElementById('dDomainHint').textContent=t.dDomainHint;
+  buildRadios('dDomainOpts',t.dDomain,'d_domain',true,'d_domain_other',t.dDomainOther);
+  document.getElementById('dExpLbl').textContent=t.dExpLbl;
+  buildRadios('dExpOpts',t.dExp,'d_exp',false,null,null);
+  document.getElementById('dQualLbl').textContent=t.dQualLbl;
+  buildRadios('dQualOpts',t.dQual,'d_qual',false,null,null);
+  document.getElementById('dFamDpLbl').textContent=t.dFamDpLbl;
+  buildRadios('dFamDpOpts',t.dFamDp,'d_famDp',false,null,null);
+  document.getElementById('dCountryLbl').textContent=t.dCountryLbl;
+  buildRadios('dCountryOpts',t.dCountry,'d_country',false,null,null);
+  document.getElementById('dFamAhpLbl').textContent=t.dFamAhpLbl;
+  buildRadios('dFamAhpOpts',t.dFamAhp,'d_famAhp',false,null,null);
+  document.getElementById('demoAlert').textContent=t.demoAlert;
+  document.getElementById('demoBtnBack').textContent=t.demoBtnBack;
+  document.getElementById('demoBtnNext').textContent=t.demoBtnNext;
+  document.getElementById('lbl3').textContent=t.lbl3;
+  document.getElementById('ttl3').textContent=t.ttl3;
+  document.getElementById('desc3').textContent=t.desc3;
+  document.getElementById('saatBox').innerHTML=t.saatBox;
+  t.pairs.forEach((p,i)=>{
+    const n=i+1;
+    document.getElementById('pl'+n).textContent=p.left;
+    document.getElementById('vs'+n).textContent=t.pairVs;
+    document.getElementById('pr'+n).textContent=p.right;
+    document.getElementById('sl'+n+'L').textContent=p.slL;
+    document.getElementById('sl'+n+'M').textContent=p.slM;
+    document.getElementById('sl'+n+'R').textContent=p.slR;
+  });
+  document.getElementById('wn1').textContent=t.wNames[0];
+  document.getElementById('wn2').textContent=t.wNames[1];
+  document.getElementById('wn3').textContent=t.wNames[2];
+  document.getElementById('ahpBtnBack').textContent=t.ahpBtnBack;
+  document.getElementById('ahpCheckBtn').textContent=t.ahpCheckBtn;
+  document.getElementById('ahpNextBtn').textContent=t.ahpNextBtn;
+  updateSliderLabels();
+  document.getElementById('lbl3b').textContent=t.lbl3b;
+  document.getElementById('ttl3b').textContent=t.ttl3b;
+  document.getElementById('desc3b').textContent=t.desc3b;
+  document.getElementById('ahpFailedNote').textContent=t.ahpFailedNote;
+  for(let d=1;d<=4;d++){
+    document.getElementById('dim'+d+'hdr').textContent=t.dimHeaders[d-1];
+    buildLikertHead(d);
+    buildLikertBody(d);
+  }
+  document.getElementById('oq1Lbl').textContent=t.oq1Lbl;
+  document.getElementById('oq2Lbl').textContent=t.oq2Lbl;
+  document.getElementById('oq1').placeholder=t.oqPH;
+  document.getElementById('oq2').placeholder=t.oqPH;
+  document.getElementById('socialAlert').textContent=t.socialAlert;
+  document.getElementById('socialBackBtn').textContent=t.socialBackBtn;
+  document.getElementById('submitBtn').textContent=t.submitBtn;
+  document.getElementById('tyTitle').textContent=t.tyTitle;
+  document.getElementById('tySub').textContent=t.tySub;
+  document.getElementById('refNote').textContent=t.refNote;
+  document.getElementById('savingMsg').textContent=t.savingMsg;
 }
 
-// ── NAVIGATION ──────────────────────────────────────────────────────
+function isOther(val){return val==='Other'||val==='أخرى'||val==='أخرى (يرجى التحديد)'||val==='Other (please specify)';}
+
+function buildRadios(containerId,options,name,isCheckbox,otherInputId,otherPH){
+  const c=document.getElementById(containerId);
+  c.innerHTML='';
+  options.forEach(opt=>{
+    const lbl=document.createElement('label');
+    lbl.className=isCheckbox?'check-opt':'radio-opt';
+    const inp=document.createElement('input');
+    inp.type=isCheckbox?'checkbox':'radio';
+    inp.name=name;
+    inp.value=opt;
+    if(otherInputId&&isOther(opt)){
+      inp.addEventListener('change',function(){
+        const otherEl=document.getElementById(otherInputId);
+        if(isCheckbox){
+          otherEl.style.display=document.querySelectorAll(`input[name="${name}"]:checked`).length>0&&[...document.querySelectorAll(`input[name="${name}"]:checked`)].some(x=>isOther(x.value))?'block':'none';
+        } else {
+          otherEl.style.display=this.checked?'block':'none';
+          otherEl.placeholder=otherPH||'';
+        }
+      });
+    } else if(otherInputId&&!isCheckbox){
+      inp.addEventListener('change',function(){
+        const otherEl=document.getElementById(otherInputId);
+        if(!isOther(this.value)) otherEl.style.display='none';
+      });
+    }
+    lbl.appendChild(inp);
+    lbl.appendChild(document.createTextNode(' '+opt));
+    c.appendChild(lbl);
+  });
+  if(otherInputId){
+    const otherEl=document.getElementById(otherInputId);
+    if(otherEl){otherEl.style.display='none';otherEl.placeholder=otherPH||'';}
+  }
+}
+
+function buildLikertHead(d){
+  const t=T[lang];
+  const thead=document.getElementById('lth'+d);
+  thead.innerHTML='';
+  const tr=document.createElement('tr');
+  t.likertHdr.forEach((h,i)=>{
+    const th=document.createElement('th');
+    if(i===0)th.className='stmt-h';
+    th.innerHTML=h;
+    tr.appendChild(th);
+  });
+  thead.appendChild(tr);
+}
+function buildLikertBody(d){
+  const t=T[lang];
+  const tbody=document.getElementById('likertBody'+d);
+  tbody.innerHTML='';
+  t.likert[d].forEach(item=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="stmt">${item.text}</td>`
+      +[1,2,3,4,5].map(v=>`<td class="radio-cell"><input type="radio" name="${item.id}" value="${v}"></td>`).join('');
+    tbody.appendChild(tr);
+  });
+}
+
+function setProgress(blockId){
+  const idx=BLOCK_ORDER.indexOf(blockId);
+  const pct=Math.round((idx/(BLOCK_ORDER.length-1))*100);
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('progressPct').textContent=pct+'%';
+}
 function goTo(blockId){
   document.getElementById(state.currentBlock).classList.remove('active');
   document.getElementById(blockId).classList.add('active');
-  state.currentBlock = blockId;
+  state.currentBlock=blockId;
   setProgress(blockId);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── RADIO HIGHLIGHT ─────────────────────────────────────────────────
-document.addEventListener('change', function(e){
-  if(e.target.type === 'radio'){
-    const grp = e.target.name;
+document.addEventListener('change',function(e){
+  if(e.target.type==='radio'){
+    const grp=e.target.name;
     document.querySelectorAll(`input[name="${grp}"]`).forEach(r=>{
-      r.closest('.radio-opt').classList.toggle('selected', r.checked);
+      const opt=r.closest('.radio-opt');
+      if(opt)opt.classList.toggle('selected',r.checked);
     });
+  }
+  if(e.target.type==='checkbox'){
+    const opt=e.target.closest('.check-opt');
+    if(opt)opt.classList.toggle('selected',e.target.checked);
   }
 });
 
-// ── BLOCK 1: CONSENT ────────────────────────────────────────────────
 function submitConsent(){
-  const val = document.querySelector('input[name="consent"]:checked')?.value;
-  const alert = document.getElementById('consentAlert');
-  if(!val){ alert.classList.add('show'); return; }
-  alert.classList.remove('show');
-  if(val === 'disagree'){
-    document.getElementById('block-consent').innerHTML = `
+  const checked=document.querySelector('input[name="consent"]:checked');
+  const alertEl=document.getElementById('consentAlert');
+  const t=T[lang];
+  if(!checked){alertEl.classList.add('show');return;}
+  alertEl.classList.remove('show');
+  if(isOther(checked.value)||checked.value===t.consentDisagree){
+    document.getElementById('block-consent').innerHTML=`
       <div style="text-align:center;padding:40px 20px">
         <div style="font-size:32px;margin-bottom:16px">🙏</div>
-        <h3 style="font-family:'Playfair Display',serif;color:var(--earth);margin-bottom:8px">Thank you for your time</h3>
-        <p style="color:var(--text-muted);font-size:14px">We respect your decision. You may close this window.</p>
+        <h3 style="color:var(--earth);margin-bottom:8px">${t.exitTitle}</h3>
+        <p style="color:var(--text-muted);font-size:14px">${t.exitSub}</p>
       </div>`;
     return;
   }
   goTo('block-demo');
 }
 
-// ── BLOCK 2: DEMOGRAPHICS ────────────────────────────────────────────
 function submitDemo(){
-  const required = ['d_field','d_exp','d_qual','d_famDp','d_country','d_famAhp'];
-  const missing  = required.some(n => !document.querySelector(`input[name="${n}"]:checked`));
-  const alert    = document.getElementById('demoAlert');
-  if(missing){ alert.classList.add('show'); return; }
-  alert.classList.remove('show');
+  const required=['d_sector','d_exp','d_qual','d_famDp','d_country','d_famAhp'];
+  const missingSingle=required.some(n=>!document.querySelector(`input[name="${n}"]:checked`));
+  const domainChecked=document.querySelectorAll('input[name="d_domain"]:checked').length>0;
+  const alertEl=document.getElementById('demoAlert');
+  if(missingSingle||!domainChecked){alertEl.classList.add('show');return;}
+  alertEl.classList.remove('show');
   goTo('block-ahp');
 }
 
-// ── AHP ENGINE ──────────────────────────────────────────────────────
-function toRatio(v){
-  v = parseInt(v);
-  if(v===9) return 1;
-  if(v<9)   return 1/(10-v);
-  return v-8;
-}
-
+function toRatio(v){v=parseInt(v);if(v===9)return 1;if(v<9)return 1/(10-v);return v-8;}
 function calcAHP(a12,a13,a23){
-  const M = [[1,a12,a13],[1/a12,1,a23],[1/a13,1/a23,1]];
-  const cs = [0,0,0];
-  for(let j=0;j<3;j++) for(let i=0;i<3;i++) cs[j]+=M[i][j];
-  const w = M.map(r=>r.reduce((s,v,j)=>s+v/cs[j],0)/3);
-  const lMax = M.map((r,i)=>r.reduce((s,v,j)=>s+v*w[j],0)/w[i]).reduce((s,v)=>s+v,0)/3;
-  const CR = Math.max(0,(lMax-3)/2/RI3);
-  return {w, CR};
+  const M=[[1,a12,a13],[1/a12,1,a23],[1/a13,1/a23,1]];
+  const cs=[0,0,0];
+  for(let j=0;j<3;j++)for(let i=0;i<3;i++)cs[j]+=M[i][j];
+  const w=M.map(r=>r.reduce((s,v,j)=>s+v/cs[j],0)/3);
+  const lMax=M.map((r,i)=>r.reduce((s,v,j)=>s+v*w[j],0)/w[i]).reduce((s,v)=>s+v,0)/3;
+  return{w,CR:Math.max(0,(lMax-3)/2/RI3)};
 }
-
 function worstPair(a12,a13,a23){
-  const checks = [
-    {label:'Environmental Impact vs Technical Performance', dev:Math.abs(Math.log(a12*(a23>0?a23:1))-Math.log(a13))},
-    {label:'Supply Chain vs Technical Performance',         dev:Math.abs(Math.log(a13)-Math.log(a12*a23))},
-    {label:'Supply Chain vs Environmental Impact',          dev:Math.abs(Math.log(a23)-Math.log(a13/a12))},
+  const t=T[lang];
+  const checks=[
+    {label:t.worstLabels[0],dev:Math.abs(Math.log(a12*(a23>0?a23:1))-Math.log(a13))},
+    {label:t.worstLabels[1],dev:Math.abs(Math.log(a13)-Math.log(a12*a23))},
+    {label:t.worstLabels[2],dev:Math.abs(Math.log(a23)-Math.log(a13/a12))},
   ];
   return checks.reduce((mx,c)=>c.dev>mx.dev?c:mx,{dev:-1,label:''}).label;
 }
-
-function sliderLabel(v, leftLabel, rightLabel){
-  const r = toRatio(v);
-  if(r===1) return 'Equal importance (1)';
-  if(r<1){ const mag=Math.round(1/r); return `${leftLabel} preferred (${mag}×)`; }
-  const mag=Math.round(r); return `${rightLabel} preferred (${mag}×)`;
+function sliderLabel(v,leftLabel,rightLabel){
+  const t=T[lang];const r=toRatio(v);
+  if(r===1)return t.sliderEqual;
+  if(r<1)return t.sliderPref(leftLabel,Math.round(1/r));
+  return t.sliderPref(rightLabel,Math.round(r));
 }
-
-// Update only the text label under each slider — no CR calculation
 function updateSliderLabels(){
-  const v1=parseInt(document.getElementById('s1').value);
-  const v2=parseInt(document.getElementById('s2').value);
-  const v3=parseInt(document.getElementById('s3').value);
-  document.getElementById('sv1').textContent = sliderLabel(v1,'Env. Impact','Tech. Performance');
-  document.getElementById('sv2').textContent = sliderLabel(v2,'Supply Chain','Tech. Performance');
-  document.getElementById('sv3').textContent = sliderLabel(v3,'Supply Chain','Env. Impact');
+  const t=T[lang];if(!t.pairs)return;
+  document.getElementById('sv1').textContent=sliderLabel(parseInt(document.getElementById('s1').value),t.pairs[0].left,t.pairs[0].right);
+  document.getElementById('sv2').textContent=sliderLabel(parseInt(document.getElementById('s2').value),t.pairs[1].left,t.pairs[1].right);
+  document.getElementById('sv3').textContent=sliderLabel(parseInt(document.getElementById('s3').value),t.pairs[2].left,t.pairs[2].right);
 }
+['s1','s2','s3'].forEach(id=>document.getElementById(id).addEventListener('input',updateSliderLabels));
 
-// Attach slider listeners — labels only, no CR
-['s1','s2','s3'].forEach(id=>{
-  document.getElementById(id).addEventListener('input', updateSliderLabels);
-});
-updateSliderLabels();
-
-// ── CR PANEL RENDERER ───────────────────────────────────────────────
-function renderCRPanel(CR, w){
-  const panel  = document.getElementById('crPanel');
-  const lbl    = document.getElementById('crLabel');
-  const val    = document.getElementById('crValue');
-  const bar    = document.getElementById('crBar');
-  const msg    = document.getElementById('crMsg');
-  const atMsg  = document.getElementById('crAttempt');
-  const wBlock = document.getElementById('weightsBlock');
-
-  panel.style.display = 'block';
-  val.textContent = CR.toFixed(3);
-  bar.style.width = Math.min(CR/0.20*100,100).toFixed(1)+'%';
-
-  panel.className='cr-panel';
-  lbl.className='cr-label';
-  val.className='cr-value';
-  msg.className='cr-msg';
-
-  if(CR < 0.10){
-    panel.classList.add('ok'); lbl.classList.add('ok');
-    val.classList.add('ok');   msg.classList.add('ok');
-    bar.style.background = 'var(--palm-mid)';
-    lbl.textContent = 'Consistency ratio — acceptable';
-    msg.textContent = 'CR = '+CR.toFixed(3)+'. Your judgments are consistent. Please click Continue to proceed.';
-    atMsg.textContent = state.ahpAttempts > 0
-      ? 'Consistency achieved after '+state.ahpAttempts+' revision(s).'
-      : '';
-    // Show weights only on pass
-    wBlock.style.display = 'block';
-    const pcts = w.map(v=>Math.round(v*100));
-    const diff = 100-pcts.reduce((s,v)=>s+v,0); pcts[0]+=diff;
-    ['wb1','wb2','wb3'].forEach((id,i)=>{ document.getElementById(id).style.width=pcts[i]+'%'; });
-    ['wp1','wp2','wp3'].forEach((id,i)=>{ document.getElementById(id).textContent=pcts[i]+'%'; });
-    // Show proceed button, hide check button
-    document.getElementById('ahpCheckBtn').style.display = 'none';
-    document.getElementById('ahpNextBtn').style.display  = 'inline-flex';
+function renderCRPanel(CR,w){
+  const t=T[lang];
+  const panel=document.getElementById('crPanel');
+  const lbl=document.getElementById('crLabel');
+  const val=document.getElementById('crValue');
+  const bar=document.getElementById('crBar');
+  const msg=document.getElementById('crMsg');
+  const atMsg=document.getElementById('crAttempt');
+  const wBlock=document.getElementById('weightsBlock');
+  panel.style.display='block';
+  val.textContent=CR.toFixed(3);
+  bar.style.width=Math.min(CR/0.20*100,100).toFixed(1)+'%';
+  panel.className='cr-panel';lbl.className='cr-label';val.className='cr-value';msg.className='cr-msg';
+  if(CR<0.10){
+    panel.classList.add('ok');lbl.classList.add('ok');val.classList.add('ok');msg.classList.add('ok');
+    bar.style.background='var(--palm-mid)';
+    lbl.textContent=t.crLabelOk;msg.textContent=t.crMsgOk(CR.toFixed(3));
+    atMsg.textContent=t.crAttemptOk(state.ahpAttempts);
+    wBlock.style.display='block';
+    const pcts=w.map(v=>Math.round(v*100));
+    const diff=100-pcts.reduce((s,v)=>s+v,0);pcts[0]+=diff;
+    ['wb1','wb2','wb3'].forEach((id,i)=>{document.getElementById(id).style.width=pcts[i]+'%';});
+    ['wp1','wp2','wp3'].forEach((id,i)=>{document.getElementById(id).textContent=pcts[i]+'%';});
+    document.getElementById('ahpCheckBtn').style.display='none';
+    document.getElementById('ahpNextBtn').style.display='inline-flex';
   } else {
-    panel.classList.add('fail'); lbl.classList.add('fail');
-    val.classList.add('fail');   msg.classList.add('fail');
-    bar.style.background = 'var(--red)';
-    wBlock.style.display = 'none';
-    if(state.ahpAttempts >= MAX_ATTEMPTS){
-      lbl.textContent = 'Consistency could not be achieved';
-      msg.textContent = 'CR = '+CR.toFixed(3)+'. Your pairwise comparison data will not be included in the weighting analysis. Your social acceptance responses remain a valuable contribution. Please click Continue below.';
-      atMsg.textContent = 'Both attempts used.';
-      document.getElementById('ahpCheckBtn').style.display = 'none';
-      document.getElementById('ahpNextBtn').style.display  = 'inline-flex';
+    panel.classList.add('fail');lbl.classList.add('fail');val.classList.add('fail');msg.classList.add('fail');
+    bar.style.background='var(--red)';wBlock.style.display='none';
+    if(state.ahpAttempts>=MAX_ATTEMPTS){
+      lbl.textContent=t.crLabelGiveUp;msg.textContent=t.crMsgGiveUp(CR.toFixed(3));
+      atMsg.textContent=t.crAttemptDone;
+      document.getElementById('ahpCheckBtn').style.display='none';
+      document.getElementById('ahpNextBtn').style.display='inline-flex';
     } else {
-      const wp = worstPair(...state.ahpRatios);
-      lbl.textContent = 'Consistency ratio — please revise';
-      msg.textContent = 'CR = '+CR.toFixed(3)+' exceeds 0.10. The most inconsistent comparison is: '
-        +wp+'. Please reconsider that judgment and check again.';
-      atMsg.textContent = 'Attempt '+state.ahpAttempts+' of '+MAX_ATTEMPTS+'. You have 1 attempt remaining.';
-      // Keep check button visible for revision
-      document.getElementById('ahpCheckBtn').style.display = 'inline-flex';
-      document.getElementById('ahpNextBtn').style.display  = 'none';
+      lbl.textContent=t.crLabelFail;
+      msg.textContent=t.crMsgFail(CR.toFixed(3),worstPair(...state.ahpRatios));
+      atMsg.textContent=t.crAttemptRemain(state.ahpAttempts,MAX_ATTEMPTS);
+      document.getElementById('ahpCheckBtn').style.display='inline-flex';
+      document.getElementById('ahpNextBtn').style.display='none';
     }
   }
-  // Scroll to panel
-  panel.scrollIntoView({behavior:'smooth', block:'nearest'});
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-
-// ── CHECK CR — called on button click only ──────────────────────────
 function checkCR(){
-  const v1=parseInt(document.getElementById('s1').value);
-  const v2=parseInt(document.getElementById('s2').value);
-  const v3=parseInt(document.getElementById('s3').value);
-  const a12=toRatio(v1), a13=toRatio(v2), a23=toRatio(v3);
-  const {w, CR} = calcAHP(a12,a13,a23);
-
-  state.ahpCR      = CR;
-  state.ahpWeights = w;
-  state.ahpRatios  = [a12,a13,a23];
-
-  if(CR >= 0.10){
-    state.ahpAttempts++;
-  }
-
-  renderCRPanel(CR, w);
+  const a12=toRatio(document.getElementById('s1').value);
+  const a13=toRatio(document.getElementById('s2').value);
+  const a23=toRatio(document.getElementById('s3').value);
+  const{w,CR}=calcAHP(a12,a13,a23);
+  state.ahpCR=CR;state.ahpWeights=w;state.ahpRatios=[a12,a13,a23];
+  if(CR>=0.10)state.ahpAttempts++;
+  renderCRPanel(CR,w);
 }
-
-// ── PROCEED — called after CR is shown ──────────────────────────────
 function proceedFromAHP(){
-  if(state.ahpCR < 0.10){
-    state.ahpStatus = 'passed';
-  } else {
-    state.ahpStatus = 'failed';
-  }
+  state.ahpStatus=state.ahpCR<0.10?'passed':'failed';
   goTo('block-social');
-  buildLikertTables();
-  if(state.ahpStatus === 'failed'){
-    document.getElementById('ahpFailedNote').style.display = 'block';
-    document.getElementById('socialBackBtn').style.display = 'none';
+  if(state.ahpStatus==='failed'){
+    document.getElementById('ahpFailedNote').style.display='block';
+    document.getElementById('socialBackBtn').style.display='none';
   }
 }
-
-// ── BUILD LIKERT TABLES ──────────────────────────────────────────────
-function buildLikertTables(){
-  for(let d=1;d<=4;d++){
-    const tbody = document.getElementById('likertBody'+d);
-    if(tbody.children.length>0) return; // already built
-    LIKERT[d].forEach(item=>{
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td class="stmt">${item.text}</td>`
-        +[1,2,3,4,5].map(v=>`<td class="radio-cell"><input type="radio" name="${item.id}" value="${v}" aria-label="${item.id} option ${v}"></td>`).join('');
-      tbody.appendChild(tr);
-    });
-  }
-}
-
-// ── BLOCK 3B: SOCIAL SUBMIT ──────────────────────────────────────────
 function submitSocial(){
-  const allIds = Object.values(LIKERT).flat().map(i=>i.id);
-  const missing = allIds.some(id=>!document.querySelector(`input[name="${id}"]:checked`));
-  const alertEl = document.getElementById('socialAlert');
-  if(missing){ alertEl.classList.add('show'); return; }
+  const t=T[lang];
+  const allIds=Object.values(t.likert).flat().map(i=>i.id);
+  const missing=allIds.some(id=>!document.querySelector(`input[name="${id}"]:checked`));
+  const alertEl=document.getElementById('socialAlert');
+  if(missing){alertEl.classList.add('show');return;}
   alertEl.classList.remove('show');
   saveAndFinish();
 }
-
-// ── COLLECT & SAVE ───────────────────────────────────────────────────
 function collectData(){
-  const g = n => document.querySelector(`input[name="${n}"]:checked`)?.value || '';
-  const allIds = Object.values(LIKERT).flat().map(i=>i.id);
-  const likertVals = {};
-  allIds.forEach(id=>{ likertVals[id] = parseInt(g(id)||0); });
-
-  const mean = arr => arr.length ? (arr.reduce((s,v)=>s+v,0)/arr.length).toFixed(2) : '';
-
-  return {
-    timestamp:       new Date().toISOString(),
-    refCode:         'DP-'+Date.now().toString(36).toUpperCase(),
-    // Demographics
-    name:            document.getElementById('d_name').value,
-    field:           g('d_field'),
-    experience:      g('d_exp'),
-    qualification:   g('d_qual'),
-    famDatePalm:     g('d_famDp'),
-    country:         g('d_country'),
-    famMCDA:         g('d_famAhp'),
-    // AHP
-    ahpStatus:       state.ahpStatus,
-    ahpAttempts:     state.ahpAttempts,
-    ahpCR:           state.ahpCR.toFixed(4),
-    wTechnical:      state.ahpWeights[0].toFixed(4),
-    wEnvironmental:  state.ahpWeights[1].toFixed(4),
-    wSupply:         state.ahpWeights[2].toFixed(4),
-    rTechEnv:        state.ahpRatios[0].toFixed(4),
-    rTechSupply:     state.ahpRatios[1].toFixed(4),
-    rEnvSupply:      state.ahpRatios[2].toFixed(4),
-    // Likert raw
+  const t=T[lang];
+  const g=n=>document.querySelector(`input[name="${n}"]:checked`)?.value||'';
+  const allIds=Object.values(t.likert).flat().map(i=>i.id);
+  const likertVals={};
+  allIds.forEach(id=>{likertVals[id]=parseInt(g(id)||0);});
+  const mean=arr=>arr.length?(arr.reduce((s,v)=>s+v,0)/arr.length).toFixed(2):'';
+  const domainVals=Array.from(document.querySelectorAll('input[name="d_domain"]:checked')).map(cb=>cb.value).join('; ');
+  const sectorOther=document.getElementById('d_sector_other')?.value||'';
+  const domainOther=document.getElementById('d_domain_other')?.value||'';
+  return{
+    timestamp:new Date().toISOString(),
+    refCode:'DP-'+Date.now().toString(36).toUpperCase(),
+    lang,
+    name:document.getElementById('d_name').value,
+    sector:g('d_sector'),sectorOther,
+    domainExpertise:domainVals,domainOther,
+    experience:g('d_exp'),qualification:g('d_qual'),
+    famDatePalm:g('d_famDp'),country:g('d_country'),famMCDA:g('d_famAhp'),
+    ahpStatus:state.ahpStatus,ahpAttempts:state.ahpAttempts,
+    ahpCR:state.ahpCR.toFixed(4),
+    wTechnical:state.ahpWeights[0].toFixed(4),
+    wEnvironmental:state.ahpWeights[1].toFixed(4),
+    wSupply:state.ahpWeights[2].toFixed(4),
+    rTechEnv:state.ahpRatios[0].toFixed(4),
+    rTechSupply:state.ahpRatios[1].toFixed(4),
+    rEnvSupply:state.ahpRatios[2].toFixed(4),
     ...likertVals,
-    // Likert dimension means
-    sCommunityMean:    mean([likertVals.S1,likertVals.S2,likertVals.S3]),
-    sProfessionalMean: mean([likertVals.S4,likertVals.S5,likertVals.S6]),
-    sAestheticMean:    mean([likertVals.S7,likertVals.S8,likertVals.S9]),
-    sWellbeingMean:    mean([likertVals.S10,likertVals.S11,likertVals.S12]),
-    sOverallMean:      mean(Object.values(likertVals)),
-    // Open questions
-    oq1: document.getElementById('oq1').value,
-    oq2: document.getElementById('oq2').value,
+    sCommunityMean:mean([likertVals.S1,likertVals.S2,likertVals.S3]),
+    sProfessionalMean:mean([likertVals.S4,likertVals.S5,likertVals.S6]),
+    sAestheticMean:mean([likertVals.S7,likertVals.S8,likertVals.S9]),
+    sWellbeingMean:mean([likertVals.S10,likertVals.S11,likertVals.S12]),
+    sOverallMean:mean(Object.values(likertVals)),
+    oq1:document.getElementById('oq1').value,
+    oq2:document.getElementById('oq2').value,
   };
 }
-
 async function saveAndFinish(){
-  const data = collectData();
+  const data=collectData();
   document.getElementById('savingOverlay').classList.add('show');
-
-  try {
-    if(SCRIPT_URL && SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE'){
-      await fetch(SCRIPT_URL, {
-        method:'POST',
-        mode:'no-cors',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(data)
-      });
-    }
-  } catch(e){ console.warn('Save failed:',e); }
-
-  // Always show thank you regardless of save status
+  try{
+    if(SCRIPT_URL)await fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+  }catch(e){console.warn('Save failed:',e);}
   document.getElementById('savingOverlay').classList.remove('show');
   showThankYou(data);
 }
-
-// ── THANK YOU ────────────────────────────────────────────────────────
 function showThankYou(data){
+  const t=T[lang];
   goTo('block-thankyou');
   document.getElementById('heroBlock').style.display='none';
-  document.getElementById('refCode').textContent = data.refCode;
-
-  const wrap = document.getElementById('summaryCards');
-
-  if(data.ahpStatus === 'passed'){
-    wrap.innerHTML = `
-      <div class="summary-card">
-        <h4>AHP criteria weights</h4>
-        <div class="summary-row"><span class="s-key">Technical Performance</span><span class="s-val">${(parseFloat(data.wTechnical)*100).toFixed(1)}%</span></div>
-        <div class="summary-row"><span class="s-key">Environmental Impact</span><span class="s-val">${(parseFloat(data.wEnvironmental)*100).toFixed(1)}%</span></div>
-        <div class="summary-row"><span class="s-key">Supply Chain</span><span class="s-val">${(parseFloat(data.wSupply)*100).toFixed(1)}%</span></div>
-        <div class="summary-row" style="margin-top:6px"><span class="s-key">Consistency Ratio</span><span class="s-val" style="color:var(--palm)">${data.ahpCR}</span></div>
+  document.getElementById('refCode').textContent=data.refCode;
+  const wrap=document.getElementById('summaryCards');
+  const row=(k,v)=>`<div class="summary-row"><span class="s-key">${k}</span><span class="s-val">${v}</span></div>`;
+  if(data.ahpStatus==='passed'){
+    wrap.innerHTML=`
+      <div class="summary-card"><h4>${t.summaryAhpTitle}</h4>
+        ${row(t.summaryTech,(parseFloat(data.wTechnical)*100).toFixed(1)+'%')}
+        ${row(t.summaryEnv,(parseFloat(data.wEnvironmental)*100).toFixed(1)+'%')}
+        ${row(t.summarySupply,(parseFloat(data.wSupply)*100).toFixed(1)+'%')}
+        ${row(t.summaryCR,'<span style="color:var(--palm)">'+data.ahpCR+'</span>')}
       </div>
-      <div class="summary-card">
-        <h4>Social acceptance means</h4>
-        <div class="summary-row"><span class="s-key">Community acceptance</span><span class="s-val">${data.sCommunityMean} / 5</span></div>
-        <div class="summary-row"><span class="s-key">Professional perception</span><span class="s-val">${data.sProfessionalMean} / 5</span></div>
-        <div class="summary-row"><span class="s-key">Aesthetic acceptance</span><span class="s-val">${data.sAestheticMean} / 5</span></div>
-        <div class="summary-row"><span class="s-key">Occupant wellbeing &amp; cultural connection</span><span class="s-val">${data.sWellbeingMean} / 5</span></div>
+      <div class="summary-card"><h4>${t.summarySocialTitle}</h4>
+        ${row(t.sumCommunity,data.sCommunityMean+' / 5')}
+        ${row(t.sumProfessional,data.sProfessionalMean+' / 5')}
+        ${row(t.sumAesthetic,data.sAestheticMean+' / 5')}
+        ${row(t.sumWellbeing,data.sWellbeingMean+' / 5')}
       </div>`;
-  } else {
-    wrap.innerHTML = `
-      <div class="summary-card">
-        <h4>Social acceptance means</h4>
-        <div class="summary-row"><span class="s-key">Community acceptance</span><span class="s-val">${data.sCommunityMean} / 5</span></div>
-        <div class="summary-row"><span class="s-key">Professional perception</span><span class="s-val">${data.sProfessionalMean} / 5</span></div>
-        <div class="summary-row"><span class="s-key">Aesthetic acceptance</span><span class="s-val">${data.sAestheticMean} / 5</span></div>
-        <div class="summary-row"><span class="s-key">Occupant wellbeing &amp; cultural connection</span><span class="s-val">${data.sWellbeingMean} / 5</span></div>
+  }else{
+    wrap.innerHTML=`
+      <div class="summary-card"><h4>${t.summarySocialTitle}</h4>
+        ${row(t.sumCommunity,data.sCommunityMean+' / 5')}
+        ${row(t.sumProfessional,data.sProfessionalMean+' / 5')}
+        ${row(t.sumAesthetic,data.sAestheticMean+' / 5')}
+        ${row(t.sumWellbeing,data.sWellbeingMean+' / 5')}
       </div>
       <div class="summary-card" style="border-color:var(--gold);background:var(--gold-light)">
-        <p style="font-size:13px;color:var(--amber);line-height:1.6">Your social acceptance responses have been recorded and will be included in the analysis. The AHP pairwise comparison data could not reach the required consistency threshold and will not be included in the criteria weighting analysis. Your participation is genuinely appreciated.</p>
+        <p style="font-size:13px;color:var(--amber);line-height:1.8">${t.summaryFailNote}</p>
       </div>`;
   }
 }
